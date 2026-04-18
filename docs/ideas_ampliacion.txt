@@ -1,0 +1,1 @@
+1 - Cabe remarcar que, en este marco simple, las dos poblaciones no se solapan (es decir, cada individuo pertenece solo a una de las dos poblaciones consideradas).
