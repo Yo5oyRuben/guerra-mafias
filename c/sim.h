@@ -8,5 +8,14 @@
 #include <stdint.h>
 #include "types.h"
 
-void time_loop(uint8_t *gamma, const Graph *g, params lambda, u_min_max u,double *xc_1, double *xc_2);
+#if SAVE_SERIES
+void time_loop(uint8_t *gamma, const Graph *g, params lambda, u_min_max u,
+               double *xc_1, double *xc_2, int *N_control,
+               double *xc_1_med, double *xc_2_med,
+               double *xc_1_sigma, double *xc_2_sigma);
+#else
+void time_loop(uint8_t *gamma, const Graph *g, params lambda, u_min_max u,
+               double *xc_1_med, double *xc_2_med, double *xc_1_sigma,
+               double *xc_2_sigma, double *c_med, double *c_sigma);
+#endif
 #endif

@@ -24,6 +24,8 @@ $src_wm = @(
   'c/state.c',
   'c/payoff.c',
   'c/dynamics.c',
+  'c/sim.c',
+  'c/utils.c',
   'c/io.c',
   'c/run_well_mixed.c'
 )
@@ -31,13 +33,19 @@ $src_wm = @(
 $src_net = @(
   'c/rng.c',
   'c/graph.c',
+  'c/state.c',
+  'c/payoff.c',
+  'c/dynamics.c',
+  'c/sim.c',
+  'c/utils.c',
+  'c/io.c',
   'c/run_network.c'
 )
 
-& $CC @flags @src_wm '-o' (Join-Path $OutDir 'run_well_mixed.exe')
+& $CC @flags @src_wm '-lm' '-o' (Join-Path $OutDir 'run_well_mixed.exe')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& $CC @flags @src_net '-o' (Join-Path $OutDir 'run_network.exe')
+& $CC @flags @src_net '-lm' '-o' (Join-Path $OutDir 'run_network.exe')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "Compilacion correcta con $CC"

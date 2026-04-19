@@ -1,10 +1,11 @@
-﻿/* File: graph.c
+/* File: graph.c
  * Purpose: Implementa la logica de construccion y gestion de grafos dispersos.
  */
 
 #include <stdlib.h>
 #include "types.h"
 #include "rng.h"
+#include "graph.h"
 
 void initial_ER(Graph *g, double p11, double p12, double p22, unsigned int seed)
 {
@@ -100,6 +101,8 @@ void initial_ER(Graph *g, double p11, double p12, double p22, unsigned int seed)
          }
       }
    }
+
+   for(i=0;i<NTOT;i++) split_degrees_i(g,i);
 }
 
 void split_degrees_i(Graph *g, int i)
