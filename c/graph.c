@@ -101,3 +101,16 @@ void initial_ER(Graph *g, double p11, double p12, double p22, unsigned int seed)
       }
    }
 }
+
+void split_degrees_i(Graph *g, int i)
+{
+   int k,j;
+   g->k_inter[i]=0;
+   g->k_intra[i]=0;
+   for(k=g->row_ptr[i];k<g->row_ptr[i+1];k++)
+   {
+      j=g->col_idx[k];
+      if((i<N1&&j<N1)||(i>=N1&&j>=N1)) g->k_intra[i]++;
+      else g->k_inter[i]++;
+   }
+}

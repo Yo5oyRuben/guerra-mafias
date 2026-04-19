@@ -1,4 +1,4 @@
-﻿/* File: rng.c
+/* File: rng.c
  * Purpose: Implementa el generador de numeros aleatorios y utilidades de muestreo.
  */
 
@@ -44,13 +44,14 @@ void rng_seed(unsigned int seed) {
         pr_state[i] = splitmix32_step(&x);
     }
 
+    /* Marcar como sembrado ANTES del warm-up para evitar recursion. */
+    pr_seeded = 1;
+
     /* Warm-up para desacoplar del estado inicial. */
     pr_idx = 0U;
     for (i = 0U; i < (PR_STATE_SIZE * 4U); ++i) {
         (void)rng_u32();
     }
-
-    pr_seeded = 1;
 }
 
 unsigned int rng_u32(void) {

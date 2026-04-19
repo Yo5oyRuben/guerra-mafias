@@ -12,6 +12,8 @@ typedef struct
     int m;
     int row_ptr[NTOT + 1];
     int *col_idx;          /* size m */
+    int k_intra[NTOT];
+    int k_inter[NTOT];
 } Graph;
 
 typedef struct
@@ -20,4 +22,12 @@ typedef struct
     double r;
     double e;
 } params;
+
+typedef struct
+{
+    double u_inter_min;
+    double u_inter_max;
+    double u_intra_min;
+    double u_intra_max;
+} u_min_max;
 #endif
