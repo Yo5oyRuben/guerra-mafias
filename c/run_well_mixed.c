@@ -1,6 +1,9 @@
-﻿#include "model.h"
+﻿/* File: run_well_mixed.c
+ * Purpose: Punto de entrada ejecutable para correr el caso well-mixed.
+ */
+
+#include "head.h"
 
 int main(void) {
-    /*run_well_mixed_example();*/
     return 0;
 }
