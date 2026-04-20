@@ -12,7 +12,7 @@
 
 /* Parametros ER por bloques */
 #define P11 (6.0/(N1-1.0))
-#define P12 0.02
+#define P12 0.0
 #define P22 (6.0/(N2-1.0))
 
 /*parametros de lambda*/

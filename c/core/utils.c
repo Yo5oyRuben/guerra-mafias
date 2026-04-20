@@ -16,7 +16,7 @@ void medvar(const double *v, int n, double *med, double *sigma)
     for(i=0;i<n;i++) sum += v[i];
     *med=sum/(double)n;
 
-    for (i=0;i<n;i++) var+=(v[i]-sum)*(v[i]-sum);
+    for (i=0;i<n;i++) var+=(v[i]-*med)*(v[i]-*med);
     var/=(double)(n-1);
     *sigma = sqrt(var);
 }

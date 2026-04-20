@@ -30,18 +30,18 @@ double Pij(int i, int j, const Graph *g, params lambda, u_min_max u, const uint8
     return P;
 }
 
-void time_step(uint8_t *gamma, const Graph *g, params lambda, u_min_max u)
+void time_step(const uint8_t *gamma_old,uint8_t *gamma_new, const Graph *g, params lambda, u_min_max u)
 {
-    int i,j,d,valid=0;
-    while(valid<NTOT)
+    int i,j,d;
+    for(i=0;i<NTOT;i++)
     {
-        i=rng_int(NTOT);
         if(g->k_intra[i]!=0)
         {
             d=rng_int(g->k_intra[i]);
             j=g->col_idx[g->row_ptr[i]+d];
-            if(Pij(i,j,g,lambda,u,gamma)>fran()) gamma[i]=gamma[j];
-            valid++;
+            if(Pij(i,j,g,lambda,u,gamma_old)>fran()) gamma_new[i]=gamma_old[j];
+            else gamma_new[i]=gamma_old[i];
         }
+        else gamma_new[i]=gamma_old[i];
     }
 }

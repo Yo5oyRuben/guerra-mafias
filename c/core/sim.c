@@ -3,13 +3,13 @@
  */
 
 #include <math.h>
-#include "config.h"
+#include "../config.h"
 #include "dynamics.h"
 #include "state.h"
 #include "utils.h"
 
 #if SAVE_SERIES
-void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
+void time_loop(uint8_t *gamma_old, uint8_t *gamma_new, const Graph *g,params lambda, u_min_max u,
                 double *xc_1, double *xc_2, int *N_control, 
                 double *xc_1_med, double *xc_2_med,
                 double *xc_1_sigma, double *xc_2_sigma)
@@ -17,15 +17,20 @@ void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
     int j,i;
     double epsilon1,epsilon2,aux;
     double W_med_sigma[8]={0};
+    uint8_t *aux_pointer;
 
     /*detectar cuando xc alcanza un valor estable*/
     i=0;
     while(i<T_MAX)
     {
-        time_step(gamma,g,lambda,u);
-        xc_1[i]=xc1(gamma);
-        xc_2[i]=xc2(gamma);
+        time_step(gamma_old,gamma_new,g,lambda,u);
+        xc_1[i]=xc1(gamma_new);
+        xc_2[i]=xc2(gamma_new);
         i++;
+        aux_pointer=gamma_old;
+        gamma_old=gamma_new;
+        gamma_new=aux_pointer;
+
         if(i%W==0)
         {
             medvar(xc_1+i-W,W,W_med_sigma+4,W_med_sigma+5);
@@ -52,9 +57,12 @@ void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
     *N_control=i;
     for(j=0;j<T_MCS;j++)
     {
-        time_step(gamma, g, lambda, u);
-        xc_1[i+j]=xc1(gamma);
-        xc_2[i+j]=xc2(gamma);
+        time_step(gamma_old,gamma_new,g,lambda,u);
+        xc_1[i+j]=xc1(gamma_new);
+        xc_2[i+j]=xc2(gamma_new);
+        aux_pointer=gamma_old;
+        gamma_old=gamma_new;
+        gamma_new=aux_pointer;
     }
 
     medvar(xc_1+i,T_MCS,xc_1_med,xc_1_sigma);
@@ -63,7 +71,7 @@ void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
 
 #else
 
-void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
+void time_loop(uint8_t *gamma_old, uint8_t *gamma_new, const Graph *g,params lambda, u_min_max u,
                 double *xc_1_med, double *xc_2_med, double *xc_1_sigma, 
                 double *xc_2_sigma, double *c_med, double *c_sigma)
 {
@@ -72,15 +80,20 @@ void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
     double W_med_sigma[8]={0};
     double xc_1[W]={0}, xc_2[W]={0};
     double xc_1_measure[T_MCS]={0}, xc_2_measure[T_MCS]={0};
+    uint8_t *aux_pointer;
 
     /*detectar cuando xc alcanza un valor estable*/
     i=0;
     while(i<T_MAX)
     {
-        time_step(gamma,g,lambda,u);
-        xc_1[i%W]=xc1(gamma);
-        xc_2[i%W]=xc2(gamma);
+        time_step(gamma_old,gamma_new,g,lambda,u);
+        xc_1[i%W]=xc1(gamma_new);
+        xc_2[i%W]=xc2(gamma_new);
         i++;
+        aux_pointer=gamma_old;
+        gamma_old=gamma_new;
+        gamma_new=aux_pointer;
+
         if(i%W==0)
         {
             medvar(xc_1,W,W_med_sigma+4,W_med_sigma+5);
@@ -106,16 +119,19 @@ void time_loop(uint8_t *gamma, const Graph *g,params lambda, u_min_max u,
     /*medir xc*/
     for(i=0;i<T_MCS;i++)
     {
-        time_step(gamma, g, lambda, u);
-        xc_1_measure[i]=xc1(gamma);
-        xc_2_measure[i]=xc2(gamma);
+        time_step(gamma_old,gamma_new,g,lambda,u);
+        xc_1_measure[i]=xc1(gamma_new);
+        xc_2_measure[i]=xc2(gamma_new);
+        aux_pointer=gamma_old;
+        gamma_old=gamma_new;
+        gamma_new=aux_pointer;
     }
 
     medvar(xc_1_measure,T_MCS,xc_1_med,xc_1_sigma);
     medvar(xc_2_measure,T_MCS,xc_2_med,xc_2_sigma);
     
     *c_med=0.5*(*xc_1_med+*xc_2_med);
-    *c_sigma=0.5*sqrt(*xc_1_sigma**xc_1_sigma+*xc_2_sigma**xc_2_sigma);
+    *c_sigma=0.5*sqrt(*xc_1_sigma**xc_1_sigma+*xc_2_sigma**xc_2_sigma)/sqrt(T_MCS);
 }
 
 #endif

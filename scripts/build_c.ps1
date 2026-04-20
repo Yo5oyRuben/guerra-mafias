@@ -16,36 +16,32 @@ if ($gcc) {
 
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
-$flags = @('-O2','-std=c90','-pedantic','-Wall','-Wextra','-I','c')
+$flags = @('-O2','-std=c90','-pedantic','-Wall','-Wextra','-I','c','-I','c/core','-I','c/apps')
+
+$core = @(
+  'c/core/rng.c',
+  'c/core/graph.c',
+  'c/core/state.c',
+  'c/core/payoff.c',
+  'c/core/dynamics.c',
+  'c/core/sim.c',
+  'c/core/utils.c',
+  'c/core/io.c'
+)
 
 $src_wm = @(
-  'c/rng.c',
-  'c/graph.c',
-  'c/state.c',
-  'c/payoff.c',
-  'c/dynamics.c',
-  'c/sim.c',
-  'c/utils.c',
-  'c/io.c',
-  'c/run_well_mixed.c'
+  'c/apps/run_well_mixed.c',
+  'c/apps/run_sweep_b.c'
 )
 
 $src_net = @(
-  'c/rng.c',
-  'c/graph.c',
-  'c/state.c',
-  'c/payoff.c',
-  'c/dynamics.c',
-  'c/sim.c',
-  'c/utils.c',
-  'c/io.c',
-  'c/run_network.c'
+  'c/apps/run_network.c'
 )
 
-& $CC @flags @src_wm '-lm' '-o' (Join-Path $OutDir 'run_well_mixed.exe')
+& $CC @flags @core @src_wm '-lm' '-o' (Join-Path $OutDir 'run_well_mixed.exe')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& $CC @flags @src_net '-lm' '-o' (Join-Path $OutDir 'run_network.exe')
+& $CC @flags @core @src_net '-lm' '-o' (Join-Path $OutDir 'run_network.exe')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "Compilacion correcta con $CC"
