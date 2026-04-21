@@ -1,4 +1,6 @@
 param(
+  [ValidateSet('paper','mafia','legacy')]
+  [string]$Model = 'paper',
   [string]$OutDir = 'build'
 )
 
@@ -14,28 +16,35 @@ if ($gcc) {
   exit 1
 }
 
+switch ($Model) {
+  'paper'  { $Base = 'c_paper' }
+  'mafia'  { $Base = 'c_mafia' }
+  default  { $Base = 'c' }
+}
+
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
-$flags = @('-O2','-std=c90','-pedantic','-Wall','-Wextra','-I','c','-I','c/core','-I','c/apps')
+$flags = @('-O2','-std=c90','-pedantic','-Wall','-Wextra','-I',$Base,'-I',"$Base/core",'-I',"$Base/apps")
 
 $core = @(
-  'c/core/rng.c',
-  'c/core/graph.c',
-  'c/core/state.c',
-  'c/core/payoff.c',
-  'c/core/dynamics.c',
-  'c/core/sim.c',
-  'c/core/utils.c',
-  'c/core/io.c'
+  "$Base/core/rng.c",
+  "$Base/core/graph.c",
+  "$Base/core/state.c",
+  "$Base/core/payoff.c",
+  "$Base/core/dynamics.c",
+  "$Base/core/sim.c",
+  "$Base/core/utils.c",
+  "$Base/core/io.c"
 )
 
 $src_wm = @(
-  'c/apps/run_well_mixed.c',
-  'c/apps/run_sweep_b.c'
+  "$Base/apps/run_well_mixed.c",
+  "$Base/apps/run_sweep_b.c"
 )
 
 $src_net = @(
-  'c/apps/run_network.c'
+  "$Base/apps/run_network.c",
+  "$Base/apps/run_sweep_b.c"
 )
 
 & $CC @flags @core @src_wm '-lm' '-o' (Join-Path $OutDir 'run_well_mixed.exe')
@@ -45,4 +54,5 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "Compilacion correcta con $CC"
+Write-Host "Modelo: $Model ($Base)"
 Write-Host "Ejecutables: $OutDir\\run_well_mixed.exe y $OutDir\\run_network.exe"
