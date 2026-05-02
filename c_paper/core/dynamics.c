@@ -30,16 +30,29 @@ double Pij(int i, int j, const Graph *g, params lambda, u_min_max u, const uint8
     return P;
 }
 
+/*optimizacion nueva ahora ya no utiliza algunas de las funciones anteriores y no
+recalculamos los pagos 2 veces en cada paso temporal, para cada nodo*/
 void time_step(const uint8_t *gamma_old,uint8_t *gamma_new, const Graph *g, params lambda, u_min_max u)
 {
     int i,j,d;
+    double payoff[NTOT];
+    double D,P;
+
+    for(i=0;i<NTOT;i++) 
+        payoff[i]=Pi_i(i,gamma_old,lambda,g);
+
     for(i=0;i<NTOT;i++)
     {
         if(g->k_intra[i]!=0)
         {
             d=rng_int(g->k_intra[i]);
             j=g->col_idx[g->row_ptr[i]+d];
-            if(Pij(i,j,g,lambda,u,gamma_old)>fran()) gamma_new[i]=gamma_old[j];
+            D=payoff[j]-payoff[i];
+            if(D<=0) P=0;
+            else
+                P=D/(g->k_intra[j]*u.u_intra_max+g->k_inter[j]*u.u_inter_max-(g->k_intra[i]*u.u_intra_min+g->k_inter[i]*u.u_inter_min));
+
+            if(P>fran()) gamma_new[i]=gamma_old[j];
             else gamma_new[i]=gamma_old[i];
         }
         else gamma_new[i]=gamma_old[i];

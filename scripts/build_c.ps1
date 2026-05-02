@@ -24,7 +24,7 @@ switch ($Model) {
 
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
-$flags = @('-O2','-std=c90','-pedantic','-Wall','-Wextra','-I',$Base,'-I',"$Base/core",'-I',"$Base/apps")
+$flags = @('-O3','-std=c90','-pedantic','-Wall','-Wextra','-I',$Base,'-I',"$Base/core",'-I',"$Base/apps")
 
 $core = @(
   "$Base/core/rng.c",
