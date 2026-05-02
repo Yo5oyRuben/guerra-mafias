@@ -1,7 +1,7 @@
 # Plot one sweep_b family written by print_c_p12.
 #
 # Usage from the repository root:
-# gnuplot -e "infile='c_paper/out/raw/sweep_b/sweep_b_E_-0.4_R_0_k11_6_k22_6_N_1100.txt'; outfile='c_paper/out/plots/sweep_b/sweep_b_E_-0.4_R_0_k11_6_k22_6_N_1100.png'" c_paper/out/gp/plot_sweep_b.gp
+# gnuplot -e "infile='c_paper/out/raw/sweep_b/sweep_b_E_-4_R_0_k11_6_k22_6_N_1100.txt'; outfile='c_paper/out/plots/sweep_b/sweep_b_E_-4_R_0_k11_6_k22_6_N_1100.png'" c_paper/out/gp/plot_sweep_b.gp
 #
 # Example input format:
 # p12

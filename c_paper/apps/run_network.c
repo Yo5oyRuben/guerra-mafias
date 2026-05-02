@@ -13,14 +13,14 @@ int main(void)
 
     char filename[256];
     snprintf(
-    filename,
-    sizeof(filename),
-    "c_paper/out/raw/sweep_b/sweep_b_E_%g_R_%g_k11_%g_k22_%g_N_%d.txt",
-    (double)E,
-    (double)R,
-    P11*(N1 - 1.0),
-    P22*(N2 - 1.0),
-    NTOT
+        filename,
+        sizeof(filename),
+        "c_paper/out/raw/sweep_b/sweep_b_E_%g_R_%g_k11_%g_k22_%g_N_%d.txt",
+        (double)E,
+        (double)R,
+        P11*(N1 - 1.0),
+        P22*(N2 - 1.0),
+        NTOT
     );
     FILE *out=fopen(filename,"w");
     if(out==NULL)
