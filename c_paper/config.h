@@ -5,9 +5,9 @@
 #define N2 1000
 #define NTOT (N1 + N2)
 
-#define T_MCS 100
-#define T_MAX 2000
-#define W 200
+#define T_MCS 500
+#define T_MAX 5000
+#define W 1000
 #define NDIV 50
 
 /* Parametros ER por bloques */
