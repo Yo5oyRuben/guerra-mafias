@@ -27,10 +27,10 @@ void sweep_b(double p12,double *c_med_values, double *c_sigma_values, double *b_
     /*barrido en b a r, e fijos*/
     for(i=0;i<NDIV;i++)
     {
-        ini_rand_Pr(gamma_old,0.5,0.5);
+        ini_rand_Pr(gamma_old,0.5,0.0);
         time_loop(gamma_old,gamma_new, &g, lambda, u, &xc_1_med, &xc_2_med, &xc_1_sigma, &xc_2_sigma, &c_med, &c_sigma);
-        c_med_values[i]=c_med;
-        c_sigma_values[i]=c_sigma;
+        c_med_values[i]=xc_1_med;
+        c_sigma_values[i]=xc_1_sigma;
         b_values[i]=lambda.b;
         lambda.b+=delta;
         u_bounds(lambda, &u);
