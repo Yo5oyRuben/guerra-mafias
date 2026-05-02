@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include "utils.h"
+#include "types.h"
 
 void medvar(const double *v, int n, double *med, double *sigma)
 {
@@ -19,4 +20,12 @@ void medvar(const double *v, int n, double *med, double *sigma)
     for (i=0;i<n;i++) var+=(v[i]-*med)*(v[i]-*med);
     var/=(double)(n-1);
     *sigma = sqrt(var);
+}
+
+point2d grid_point(int ix, int iy, int ndiv)
+{
+    point2d point;
+    point.x1=ix/(double)ndiv;
+    point.x2=iy/(double)ndiv;
+    return point;
 }

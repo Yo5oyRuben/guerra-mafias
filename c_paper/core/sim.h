@@ -17,5 +17,9 @@ void time_loop(uint8_t *gamma_old, uint8_t *gamma_new, const Graph *g, params la
 void time_loop(uint8_t *gamma_old, uint8_t *gamma_new, const Graph *g, params lambda, u_min_max u,
                double *xc_1_med, double *xc_2_med, double *xc_1_sigma,
                double *xc_2_sigma, double *c_med, double *c_sigma);
+
+int time_loop_relax(uint8_t *gamma_old, uint8_t *gamma_new, const Graph *g, params lambda, u_min_max u,
+                    double *xc_1_med, double *xc_2_med, double *xc_1_sigma,
+                    double *xc_2_sigma, double *c_med, double *c_sigma);
 #endif
 #endif

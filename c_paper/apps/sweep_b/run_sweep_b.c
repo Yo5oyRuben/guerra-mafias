@@ -1,4 +1,4 @@
-#include "../head.h"
+#include "../../head.h"
 
 /*hace un sweep desde bmin hasta bmax (defines) en saltitos controlados por NDIV.
 p12 es variable y se le pasa como argumento. devuelve el vector de valores de c y

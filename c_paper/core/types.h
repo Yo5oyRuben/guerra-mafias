@@ -30,4 +30,10 @@ typedef struct
     double u_intra_min;
     double u_intra_max;
 } u_min_max;
+
+typedef struct
+{
+    double x1;
+    double x2;
+} point2d;
 #endif

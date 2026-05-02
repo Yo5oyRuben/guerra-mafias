@@ -2,7 +2,7 @@
  * Purpose: Punto de entrada ejecutable para correr el caso con red.
  */
 
-#include "../head.h"
+#include "../../head.h"
 #include "sweeps.h"
 
 int main(void)
@@ -12,6 +12,8 @@ int main(void)
     double p12[7]={0.0,0.001,0.002,0.005,0.01,0.02,0.04};
 
     char filename[256];
+    FILE *out;
+
     snprintf(
         filename,
         sizeof(filename),
@@ -22,7 +24,7 @@ int main(void)
         P22*(N2 - 1.0),
         NTOT
     );
-    FILE *out=fopen(filename,"w");
+    out=fopen(filename,"w");
     if(out==NULL)
     {
         printf("No se pudo abrir %s\n", filename);

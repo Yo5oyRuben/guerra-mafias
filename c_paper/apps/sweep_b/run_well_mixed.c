@@ -2,7 +2,7 @@
  * Purpose: Punto de entrada ejecutable para correr el caso well-mixed.
  */
 
-#include "../head.h"
+#include "../../head.h"
 #include "sweeps.h"
 
 int main(void)
