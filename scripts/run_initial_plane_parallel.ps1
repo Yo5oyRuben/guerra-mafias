@@ -3,11 +3,11 @@ param(
   [int]$NDiv = -1,
   [int]$NReps = -1,
   [string]$OutDir = 'build',
-  [string]$Output = 'c_paper/out/raw/initial_plane/initial_plane_parallel.txt'
+  [string]$Output = ''
 )
 
 $Base = 'c_paper'
-$PartialDir = "$Base/out/raw/initial_plane/parts"
+$PartialRoot = "$Base/out/raw/initial_plane/parts"
 
 if ($Jobs -lt 1) {
   Write-Error 'Jobs debe ser >= 1.'
@@ -26,11 +26,29 @@ if ($gcc) {
   exit 1
 }
 
-New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-New-Item -ItemType Directory -Force -Path $PartialDir | Out-Null
-New-Item -ItemType Directory -Force -Path (Split-Path $Output -Parent) | Out-Null
-
 $configText = Get-Content "$Base/config.h" -Raw
+
+function Get-DefineValue([string]$Name) {
+  if ($configText -match "(?m)^\s*#define\s+$Name\s+(.+?)\s*$") {
+    return ($Matches[1] -replace '/\*.*?\*/','').Trim()
+  }
+  return 'NA'
+}
+
+function Safe-Tag([string]$Value) {
+  $s = $Value.Trim()
+  $s = $s -replace '\s+', ''
+  $s = $s -replace '\(', ''
+  $s = $s -replace '\)', ''
+  $s = $s -replace '\.', 'p'
+  $s = $s -replace '-', 'm'
+  $s = $s -replace '\+', 'p'
+  $s = $s -replace '/', 'over'
+  $s = $s -replace '[^A-Za-z0-9_]', '_'
+  if ($s.Length -eq 0) { return 'NA' }
+  return $s
+}
+
 if ($NDiv -lt 0) {
   if ($configText -match '#define\s+N_INI_NDIV\s+(\d+)') {
     $NDiv = [int]$Matches[1]
@@ -46,7 +64,32 @@ if ($NReps -lt 0) {
   }
 }
 
+$tagParts = @(
+  "N1_$(Safe-Tag (Get-DefineValue 'N1'))",
+  "N2_$(Safe-Tag (Get-DefineValue 'N2'))",
+  "P11_$(Safe-Tag (Get-DefineValue 'P11'))",
+  "P12_$(Safe-Tag (Get-DefineValue 'P12'))",
+  "P22_$(Safe-Tag (Get-DefineValue 'P22'))",
+  "B_$(Safe-Tag (Get-DefineValue 'B'))",
+  "R_$(Safe-Tag (Get-DefineValue 'R'))",
+  "E_$(Safe-Tag (Get-DefineValue 'E'))",
+  "ndiv_$NDiv",
+  "reps_$NReps"
+)
+$runTag = $tagParts -join '__'
+$PartialDir = Join-Path $PartialRoot $runTag
+
+if ($Output -eq '') {
+  $Output = "$Base/out/raw/initial_plane/initial_plane__$runTag.txt"
+}
+
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+New-Item -ItemType Directory -Force -Path $PartialDir | Out-Null
+New-Item -ItemType Directory -Force -Path (Split-Path $Output -Parent) | Out-Null
+
 Write-Host "Configuracion initial plane: Jobs=$Jobs NDiv=$NDiv NReps=$NReps"
+Write-Host "Etiqueta: $runTag"
+Write-Host "Carpeta de parciales: $PartialDir"
 
 $flags = @(
   '-O3','-std=c90','-pedantic','-Wall','-Wextra',

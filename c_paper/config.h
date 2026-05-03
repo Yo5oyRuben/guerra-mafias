@@ -1,12 +1,12 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define N1 500
-#define N2 500
+#define N1 100
+#define N2 100
 #define NTOT (N1 + N2)
 
 #define T_MCS 1000
-#define T_MAX 30000
+#define T_MAX 50000
 #define W 2000
 #define NDIV 100
 
