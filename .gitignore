@@ -18,3 +18,7 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+.syncmetadata
+
+# Temporary queue backups
+*.queue_backup

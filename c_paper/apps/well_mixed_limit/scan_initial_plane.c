@@ -62,6 +62,7 @@ FILE *open_initial_plane_file(const char *filename, params lambda, double p12,
 {
     FILE *out;
     double A_prima, B_prima, E_0, E_1;
+    double rho, a12, a21, d, h, den;
     out=fopen(filename,"w");
     if(out==NULL)
     {
@@ -69,12 +70,17 @@ FILE *open_initial_plane_file(const char *filename, params lambda, double p12,
         return NULL;
     }
 
-    A_prima=-(lambda.r+(double)N1/N2*p12*lambda.e)/(lambda.b-1-lambda.r);
-    B_prima=A_prima*(double)N1/N2;
-    E_0=((lambda.b-1-lambda.r)*((double)N1/N2*lambda.r+p12*lambda.e)
-        -p12*(lambda.b-1-lambda.e)*(lambda.r+(double)N1/N2*p12*lambda.e))/
-        ((double)N1/N2*(p12*p12*(lambda.b-1-lambda.e)*(lambda.b-1-lambda.e)-(lambda.b-1-lambda.r)*(lambda.b-1-lambda.r)));
-    E_1=E_0*(double)N1/N2;
+    rho=(double)N1/N2;
+    a12=p12/rho;
+    a21=p12*rho;
+    d=lambda.b-1-lambda.r;
+    h=lambda.b-1-lambda.e;
+    den=p12*p12*h*h-d*d;
+
+    A_prima=-(lambda.r+a21*lambda.e)/d;
+    B_prima=-(lambda.r+a12*lambda.e)/d;
+    E_0=(d*(lambda.r+a12*lambda.e)-a12*h*(lambda.r+a21*lambda.e))/den;
+    E_1=(d*(lambda.r+a21*lambda.e)-a21*h*(lambda.r+a12*lambda.e))/den;
 
     fprintf(out,"# scan initial plane\n");
     fprintf(out,"# b %.12g\n", lambda.b);
