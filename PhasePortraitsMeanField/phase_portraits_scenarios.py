@@ -316,13 +316,13 @@ def plot_interior_nullclines(ax: Axes, b: float, beta: float, r: float, p: float
     if abs(p * C) > 1e-12:
         y1 = (beta * r + p * eps - beta * A * xs) / (p * C)
         mask = (y1 >= 0.0) & (y1 <= 1.0)
-        ax.plot(xs[mask], y1[mask], lw=1.33, color="orange", solid_capstyle="round")
+        ax.plot(xs[mask], y1[mask], lw=1.33, color="darkorange", solid_capstyle="round")
 
     # g2 = 0: x2*A-r + beta*p*(x1*C-eps)=0
     if abs(A) > 1e-12:
         y2 = (r + beta * p * eps - beta * p * C * xs) / A
         mask = (y2 >= 0.0) & (y2 <= 1.0)
-        ax.plot(xs[mask], y2[mask], lw=1.33, color="orange", solid_capstyle="round")
+        ax.plot(xs[mask], y2[mask], lw=1.33, color="darkorange", solid_capstyle="round")
 
 
 def plot_phase_panel(ax: Axes, b: float, beta: float, r: float, p: float, eps: float, panel_title: str = "", grid: int = 51, arrows: int = 17) -> List[FixedPoint]:
@@ -351,7 +351,7 @@ def plot_phase_panel(ax: Axes, b: float, beta: float, r: float, p: float, eps: f
             UA[i, j], VA[i, j] = F(np.array([XA[i, j], YA[i, j]]), b, beta, r, p, eps)
     norm = np.sqrt(UA**2 + VA**2)
     norm[norm == 0] = 1.0
-    ax.quiver(XA, YA, UA / norm, VA / norm, angles="xy", scale_units="xy", scale=18, width=0.003, color="black", alpha=0.72)
+    ax.quiver(XA, YA, UA / norm, VA / norm, angles="xy", scale_units="xy", scale=18, width=0.003, color="black", alpha=0.75)
 
     plot_interior_nullclines(ax, b, beta, r, p, eps)
 
@@ -451,7 +451,14 @@ def plot_all_scenarios(save: bool = True, outdir: str = ".") -> None:
 
 if __name__ == "__main__":
     # Option 1: reproduce an article-like symmetric sequence, Fig.2 style.
-    # plot_table_scenario("g)", beta=1.0, r=0.0, p=0.3, eps=-0.4)
+    # plot_table_scenario("(i)", beta=1.0, r=0.0, p=0.3, eps=-0.4)
+    plot_table_scenario(
+        "(ii₁)",
+        beta=1.01,
+        r=0.000396,
+        p=0.02,
+        eps=-0.02
+    )
 
     # Option 2: generate the seven Table-I visual sequences.
-    plot_all_scenarios(save=True, outdir=".")
+    # plot_all_scenarios(save=True, outdir=".")
