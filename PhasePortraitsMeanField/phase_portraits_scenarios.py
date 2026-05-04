@@ -24,6 +24,9 @@ import matplotlib.pyplot as plt
 from scipy.optimize import root
 from scipy.integrate import solve_ivp
 
+from matplotlib.axes import Axes
+from matplotlib.figure import Figure
+
 
 # ---------------------------------------------------------------------
 # 1. Model
@@ -50,8 +53,7 @@ def F(x: np.ndarray, b: float, beta: float, r: float, p: float, eps: float) -> n
 # ---------------------------------------------------------------------
 
 
-def jacobian_numeric(x: np.ndarray, b: float, beta: float, r: float, p: float, eps: float,
-                     h: float = 1e-6) -> np.ndarray:
+def jacobian_numeric(x: np.ndarray, b: float, beta: float, r: float, p: float, eps: float, h: float = 1e-6) -> np.ndarray:
     """Central finite-difference Jacobian."""
     x = np.asarray(x, dtype=float)
     J = np.zeros((2, 2), dtype=float)
@@ -107,8 +109,7 @@ class FixedPoint:
     classification: str
 
 
-def find_fixed_points(b: float, beta: float, r: float, p: float, eps: float,
-                      grid_size: int = 13, tol: float = 1e-9) -> List[FixedPoint]:
+def find_fixed_points(b: float, beta: float, r: float, p: float, eps: float, grid_size: int = 13, tol: float = 1e-9) -> List[FixedPoint]:
     """Find all fixed points in the closed unit square by multistart root finding."""
     args = (b, beta, r, p, eps)
     guesses = []
@@ -195,13 +196,13 @@ def critical_values(beta: float, r: float, p: float, eps: float) -> CriticalValu
 
 
 TABLE_I_SEQUENCES: Dict[str, List[str]] = {
-    "a": ["D,A,B", "D,A", "D"],
-    "b": ["A,B", "A", "A'", "E"],
-    "c": ["A,B", "A", "A'"],
-    "d": ["A,B", "A,B'", "A", "A'"],
-    "e": ["A,B", "A,B'", "A", "A'", "E"],
-    "f": ["A,B", "A,B'", "A',B'", "A'"],
-    "g": ["A,B", "A,B'", "A',B'", "A'", "E"],
+    "(i)": ["D,A,B", "D,A", "D"],
+    "(ii₂)": ["A,B", "A", "A'", "E"],
+    "(ii₁)": ["A,B", "A", "A'"],
+    "(iii₁)": ["A,B", "A,B'", "A", "A'"],
+    "(iii₂)": ["A,B", "A,B'", "A", "A'", "E"],
+    "(iii₃)": ["A,B", "A,B'", "A',B'", "A'"],
+    "(iii₄)": ["A,B", "A,B'", "A',B'", "A'", "E"],
 }
 
 
@@ -219,19 +220,19 @@ def b_values_for_table_scenario(label: str, cv: CriticalValues) -> List[float]:
     def after(u: float) -> float:
         return u + max(0.05, 0.08 * abs(u))
 
-    if label == "a":
+    if label == "(i)":
         return [mid(b0, bB), mid(bB, bA), after(bA)]
-    if label == "b":
+    if label == "(ii₂)":
         return [mid(b0, bB), mid(bB, bA), mid(bA, cA), after(cA)]
-    if label == "c":
+    if label == "(ii₁)":
         return [mid(b0, bB), mid(bB, bA), after(bA)]
-    if label == "d":
+    if label == "(iii₁)":
         return [mid(b0, bB), mid(bB, cB), mid(cB, bA), after(bA)]
-    if label == "e":
+    if label == "(iii₂)":
         return [mid(b0, bB), mid(bB, cB), mid(cB, bA), mid(bA, cA), after(cA)]
-    if label == "f":
+    if label == "(iii₃)":
         return [mid(b0, bB), mid(bB, bA), mid(bA, cB), after(cB)]
-    if label == "g":
+    if label == "(iii₄)":
         return [mid(b0, bB), mid(bB, bA), mid(bA, cB), mid(cB, cA), after(cA)]
     raise ValueError(f"Unknown Table-I scenario: {label!r}")
 
@@ -242,14 +243,19 @@ def b_values_for_table_scenario(label: str, cv: CriticalValues) -> List[float]:
 EXAMPLE_PARAMETER_SETS: Dict[str, Dict[str, float]] = {
     # Shared article-like choices whenever possible.
     # eps is epsilon in the article and should be negative.
-    "a": dict(beta=1.05, r=0.150, p=0.30, eps=-0.40),
-    "b": dict(beta=1.02, r=0.005, p=0.05, eps=-0.10),  # edit if needed; code still follows row-b b ordering
-    "c": dict(beta=1.05, r=0.116, p=0.30, eps=-0.40),
-    "d": dict(beta=1.10, r=0.106, p=0.30, eps=-0.40),
-    "e": dict(beta=1.20, r=0.000, p=0.30, eps=-0.40),
-    "f": dict(beta=1.05, r=0.110, p=0.30, eps=-0.40),
-    "g": dict(beta=1.05, r=0.000, p=0.30, eps=-0.40),
+
+    "(i)": dict(beta=1.25, r=0.160, p=0.30, eps=-0.40),
+
+    # Escenario delicado: beta debe estar muy cerca de 1.
+    "(ii₂)": dict(beta=1.01, r=0.000396, p=0.020, eps=-0.020),
+
+    "(ii₁)": dict(beta=1.50, r=0.316, p=0.80, eps=-1.00),
+    "(iii₁)": dict(beta=1.0, r=0.105, p=0.30, eps=-0.40),
+    "(iii₂)": dict(beta=1.50, r=0.010, p=0.575, eps=-1.00),
+    "(iii₃)": dict(beta=1.25, r=0.386, p=0.80, eps=-1.00),
+    "(iii₄)": dict(beta=1.25, r=0.050, p=0.775, eps=-1.00),
 }
+
 
 
 # ---------------------------------------------------------------------
@@ -257,8 +263,7 @@ EXAMPLE_PARAMETER_SETS: Dict[str, Dict[str, float]] = {
 # ---------------------------------------------------------------------
 
 
-def no_limit_cycle_certificate(b: float, beta: float, r: float, p: float, eps: float,
-                               tol: float = 1e-10) -> str:
+def no_limit_cycle_certificate(b: float, beta: float, r: float, p: float, eps: float, tol: float = 1e-10) -> str:
     """
     Certify absence of interior limit cycles when possible.
 
@@ -301,8 +306,7 @@ def no_limit_cycle_certificate(b: float, beta: float, r: float, p: float, eps: f
 # ---------------------------------------------------------------------
 
 
-def plot_interior_nullclines(ax: plt.Axes, b: float, beta: float, r: float, p: float, eps: float,
-                             n: int = 600) -> None:
+def plot_interior_nullclines(ax: Axes, b: float, beta: float, r: float, p: float, eps: float, n: int = 600) -> None:
     """Plot only the interior straight-line nullclines g1=0 and g2=0."""
     xs = np.linspace(0.0, 1.0, n)
     A = 1.0 - b + r
@@ -312,17 +316,16 @@ def plot_interior_nullclines(ax: plt.Axes, b: float, beta: float, r: float, p: f
     if abs(p * C) > 1e-12:
         y1 = (beta * r + p * eps - beta * A * xs) / (p * C)
         mask = (y1 >= 0.0) & (y1 <= 1.0)
-        ax.plot(xs[mask], y1[mask], lw=2.2, color="dimgray", solid_capstyle="round")
+        ax.plot(xs[mask], y1[mask], lw=1.33, color="orange", solid_capstyle="round")
 
     # g2 = 0: x2*A-r + beta*p*(x1*C-eps)=0
     if abs(A) > 1e-12:
         y2 = (r + beta * p * eps - beta * p * C * xs) / A
         mask = (y2 >= 0.0) & (y2 <= 1.0)
-        ax.plot(xs[mask], y2[mask], lw=2.2, color="dimgray", ls="--", solid_capstyle="round")
+        ax.plot(xs[mask], y2[mask], lw=1.33, color="orange", solid_capstyle="round")
 
 
-def plot_phase_panel(ax: plt.Axes, b: float, beta: float, r: float, p: float, eps: float,
-                     panel_title: str = "", grid: int = 51, arrows: int = 17) -> List[FixedPoint]:
+def plot_phase_panel(ax: Axes, b: float, beta: float, r: float, p: float, eps: float, panel_title: str = "", grid: int = 51, arrows: int = 17) -> List[FixedPoint]:
     """One Fig.2-like phase-portrait panel."""
     xs = np.linspace(0.0, 1.0, grid)
     ys = np.linspace(0.0, 1.0, grid)
@@ -335,7 +338,7 @@ def plot_phase_panel(ax: plt.Axes, b: float, beta: float, r: float, p: float, ep
             U[i, j], V[i, j] = F(np.array([X[i, j], Y[i, j]]), b, beta, r, p, eps)
 
     speed = np.sqrt(U**2 + V**2)
-    pcm = ax.pcolormesh(X, Y, speed, shading="gouraud", cmap="viridis")
+    pcm = ax.pcolormesh(X, Y, speed, shading="gouraud", cmap="GnBu_r")
 
     # Arrows, separated from background grid for readability.
     xa = np.linspace(0.04, 0.96, arrows)
@@ -348,8 +351,7 @@ def plot_phase_panel(ax: plt.Axes, b: float, beta: float, r: float, p: float, ep
             UA[i, j], VA[i, j] = F(np.array([XA[i, j], YA[i, j]]), b, beta, r, p, eps)
     norm = np.sqrt(UA**2 + VA**2)
     norm[norm == 0] = 1.0
-    ax.quiver(XA, YA, UA / norm, VA / norm, angles="xy", scale_units="xy",
-              scale=18, width=0.003, color="black", alpha=0.72)
+    ax.quiver(XA, YA, UA / norm, VA / norm, angles="xy", scale_units="xy", scale=18, width=0.003, color="black", alpha=0.72)
 
     plot_interior_nullclines(ax, b, beta, r, p, eps)
 
@@ -357,19 +359,23 @@ def plot_phase_panel(ax: plt.Axes, b: float, beta: float, r: float, p: float, ep
     for fp in fps:
         x, y = fp.point
         if "stable" in fp.classification and "unstable" not in fp.classification:
-            marker, face = "o", "black"
+            marker, face = "o", "lime"
+            ax.plot(x, y, marker=marker, ms=7.5, mec="black", mfc=face, mew=1.1, zorder=5)
+            ax.text(x + 0.018, y + 0.018, fp.name, fontsize=12, color="limegreen", weight="bold", zorder=6)
         elif fp.classification == "saddle":
-            marker, face = "s", "white"
+            marker, face = "o", "yellow"
+            ax.plot(x, y, marker=marker, ms=5, mec="black", mfc=face, mew=0.5, zorder=5)
         elif "unstable" in fp.classification:
-            marker, face = "X", "white"
+            marker, face = "o", "red"
+            ax.plot(x, y, marker=marker, ms=5, mec="black", mfc=face, mew=0.5, zorder=5)
         else:
-            marker, face = "D", "white"
+            marker, face = "o", "yellow"
 
-        ax.plot(x, y, marker=marker, ms=7.5, mec="black", mfc=face, mew=1.1, zorder=5)
-        ax.text(x + 0.018, y + 0.018, fp.name, fontsize=9, weight="bold", zorder=6)
+    #ax.set_xlim(0.0, 1.0)
+    #ax.set_ylim(0.0, 1.0)
 
-    ax.set_xlim(0.0, 1.0)
-    ax.set_ylim(0.0, 1.0)
+    ax.set_xlim(-0.04, 1.04)
+    ax.set_ylim(-0.04, 1.04)
     ax.set_aspect("equal", adjustable="box")
     ax.set_xlabel(r"$x_1$")
     ax.set_ylabel(r"$x_2$")
@@ -378,8 +384,7 @@ def plot_phase_panel(ax: plt.Axes, b: float, beta: float, r: float, p: float, ep
     return fps
 
 
-def plot_table_scenario(label: str, beta: float, r: float, p: float, eps: float,
-                        save: bool = True, outdir: str = ".") -> plt.Figure:
+def plot_table_scenario(label: str, beta: float, r: float, p: float, eps: float, save: bool = True, outdir: str = ".") -> Figure:
     """Plot the full sequence of panels corresponding to one Table-I scenario."""
     label = label.lower()
     if label not in TABLE_I_SEQUENCES:
@@ -395,7 +400,7 @@ def plot_table_scenario(label: str, beta: float, r: float, p: float, eps: float,
         axes = [axes]
 
     print("\n" + "=" * 72)
-    print(f"TABLE-I SCENARIO {label.upper()}")
+    print(f"TABLE-I SCENARIO {label}")
     print(f"parameters: beta={beta}, r={r}, p={p}, eps={eps}")
     print(f"critical values: bup_B={cv.bup_B:.6g}, bup_A={cv.bup_A:.6g}, "
           f"bc_B={cv.bc_B:.6g}, bc_A={cv.bc_A:.6g}, rc_A={cv.rc_A:.6g}, rc_B={cv.rc_B:.6g}")
@@ -417,12 +422,12 @@ def plot_table_scenario(label: str, beta: float, r: float, p: float, eps: float,
         last_pcm = ax.collections[0]
 
     fig.suptitle(
-        rf"Scenario {label.upper()} | $eta={beta}$, $r={r}$, $p={p}$, $epsilon={eps}$",
+        rf"Escenario {label} | $\beta={beta}$, $r={r}$, $p={p}$, $\epsilon={eps}$",
         fontsize=13,
         weight="bold",
     )
     if last_pcm is not None:
-        fig.colorbar(last_pcm, ax=axes, shrink=0.82, label=r"$|dot{x}|$")
+        fig.colorbar(last_pcm, ax=axes, shrink=0.82, label=r"$|\dot{\mathbf{x}}|$")
 
     if save:
         filename = f"{outdir.rstrip('/')}/scenario_{label}_phase_portraits.png"
@@ -446,7 +451,7 @@ def plot_all_scenarios(save: bool = True, outdir: str = ".") -> None:
 
 if __name__ == "__main__":
     # Option 1: reproduce an article-like symmetric sequence, Fig.2 style.
-    # plot_table_scenario("g", beta=1.0, r=0.0, p=0.3, eps=-0.4)
+    # plot_table_scenario("g)", beta=1.0, r=0.0, p=0.3, eps=-0.4)
 
     # Option 2: generate the seven Table-I visual sequences.
     plot_all_scenarios(save=True, outdir=".")
