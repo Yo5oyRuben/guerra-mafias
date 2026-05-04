@@ -451,14 +451,7 @@ def plot_all_scenarios(save: bool = True, outdir: str = ".") -> None:
 
 if __name__ == "__main__":
     # Option 1: reproduce an article-like symmetric sequence, Fig.2 style.
-    # plot_table_scenario("(i)", beta=1.0, r=0.0, p=0.3, eps=-0.4)
-    plot_table_scenario(
-        "(ii₁)",
-        beta=1.01,
-        r=0.000396,
-        p=0.02,
-        eps=-0.02
-    )
+    #plot_table_scenario("(ii₁)", beta=1.01, r=0.000396, p=0.02, eps=-0.02)
 
     # Option 2: generate the seven Table-I visual sequences.
     # plot_all_scenarios(save=True, outdir=".")
