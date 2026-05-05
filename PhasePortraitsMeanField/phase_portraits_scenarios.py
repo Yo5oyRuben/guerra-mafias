@@ -457,60 +457,106 @@ def crits(beta, r, p, eps):
 
     return bup_B, bup_A, bc_B, bc_A
 
-"""
+
 #----------------------------------------------------------------------Aux 
 
 def find_params_for_AB_A_Ap_E():
-    
-    #Search for parameter combinations satisfying strict conditions:
-    #- b > 1, r >= 0, p > 0, eps < 0
-    #- bB > 1, bA > bB, bcA > bA
-    #- Additional constraint: bA - bB > 0.05 (visible separation)
-    #- Additional constraint: bcA - bA > 0.05 (visible separation)
-    
+    """
+    Search parameters for scenario (ii_2):
+
+        A,B  ->  A  ->  A'  ->  E
+
+    Correct conditions from the paper:
+
+        rB < r < rA
+        beta < betaA_c
+        1 < bup_B < bup_A < bc_A
+
+    where B' is not stable in this regime.
+    """
     candidates = []
 
-    # More restrictive search: smaller ranges
-    for beta in np.linspace(1.0, 3.0, 20):
-        for p in np.linspace(0.1, 0.9, 20):
-            for eps in np.linspace(-1.0, -0.2, 20):
-                # Search r with stricter bounds
-                for r in np.linspace(0.1, 2.0, 40):
+    for beta in np.linspace(1.01, 3.00, 100):
+        for p in np.linspace(0.05, 0.90, 100):
+            for eps in np.linspace(-2.0, -0.1, 100):
+
+                rB = -p * eps / beta
+                rA = -beta * p * eps
+
+                if not (rB < rA):
+                    continue
+
+                # Search r directly inside the relevant interval.
+                for r in np.linspace(rB * 1.001, rA * 0.999, 50):
                     bB, bA, bcB, bcA = crits(beta, r, p, eps)
 
-                    # Skip if any value is not finite
-                    if not (np.isfinite(bB) and np.isfinite(bA) and np.isfinite(bcA)):
+                    if not (
+                        np.isfinite(bB)
+                        and np.isfinite(bA)
+                        and np.isfinite(bcA)
+                    ):
                         continue
 
-                    # Strict constraints that cannot be relaxed:
-                    # 1. bB > 1
-                    if not (bB > 1.0):
+                    # Scenario (ii): B' is not stable in this r-region.
+                    if not (rB < r < rA):
                         continue
-                    
-                    # 2. bA > bB with visible separation
-                    if not (bA > bB + 0.1):
+
+                    # betaA_c from Eq. (A21)
+                    den_betaA = r - p**2 * eps
+
+                    if abs(den_betaA) < 1e-12:
                         continue
-                    
-                    # 3. bcA > bA with visible separation
-                    if not (bcA > bA + 0.1):
+
+                    betaA_c = p * (r - eps) / den_betaA
+
+                    # Scenario (ii_2), not (ii_1)
+                    if not (beta < betaA_c):
                         continue
-                    
-                    # Additional criterion: reasonable ordering and scale
-                    if bB < 2.0 and bA < 3.0 and bcA < 10.0:
+
+                    # Correct bifurcation order for A,B -> A -> A' -> E
+                    if not (1.0 < bB < bA < bcA):
+                        continue
+
+                    # Optional visual separation.
+                    if not (bA > bB + 0.025):
+                        continue
+
+                    if not (bcA > bA + 0.025):
                         candidates.append({
-                            'beta': beta,
-                            'r': r,
-                            'p': p,
-                            'eps': eps,
-                            'bB': bB,
-                            'bA': bA,
-                            'bcA': bcA
+                            "beta": beta,
+                            "r": r,
+                            "p": p,
+                            "eps": eps,
+                            "rB": rB,
+                            "rA": rA,
+                            "betaA_c": betaA_c,
+                            "bB": bB,
+                            "bA": bA,
+                            "bcA": bcA,
                         })
+
+
+                    # Optional reasonable plotting scale.
+                    """
+                    if bB < 3.0 and bA < 5.0 and bcA < 20.0:
+                        candidates.append({
+                            "beta": beta,
+                            "r": r,
+                            "p": p,
+                            "eps": eps,
+                            "rB": rB,
+                            "rA": rA,
+                            "betaA_c": betaA_c,
+                            "bB": bB,
+                            "bA": bA,
+                            "bcA": bcA,
+                        })
+                    """
+
 
     return candidates
 
-#----------------------------------------------------------------------Aux 
-"""
+#----------------------------------------------------------------------Aux
 
 # ---------------------------------------------------------------------
 # 6. Main examples
@@ -557,5 +603,6 @@ if __name__ == "__main__":
     print(f"Results saved to: {output_file}")
     print("=" * 80)
     """
+    
 
     
