@@ -444,6 +444,74 @@ def plot_all_scenarios(save: bool = True, outdir: str = ".") -> None:
     plt.show()
 
 
+def crits(beta, r, p, eps):
+    """Calculate critical bifurcation values."""
+    bup_B = 1 - p * eps / beta
+    bup_A = 1 - beta * p * eps
+
+    den_B = (r + beta * p * eps) - p * (beta * r + p * eps)
+    den_A = (beta * r + p * eps) - p * (r + beta * p * eps)
+
+    bc_B = np.nan if abs(den_B) < 1e-12 else 1 + (r**2 - (p * eps)**2) / den_B
+    bc_A = np.nan if abs(den_A) < 1e-12 else 1 + beta * (r**2 - (p * eps)**2) / den_A
+
+    return bup_B, bup_A, bc_B, bc_A
+
+"""
+#----------------------------------------------------------------------Aux 
+
+def find_params_for_AB_A_Ap_E():
+    
+    #Search for parameter combinations satisfying strict conditions:
+    #- b > 1, r >= 0, p > 0, eps < 0
+    #- bB > 1, bA > bB, bcA > bA
+    #- Additional constraint: bA - bB > 0.05 (visible separation)
+    #- Additional constraint: bcA - bA > 0.05 (visible separation)
+    
+    candidates = []
+
+    # More restrictive search: smaller ranges
+    for beta in np.linspace(1.0, 3.0, 20):
+        for p in np.linspace(0.1, 0.9, 20):
+            for eps in np.linspace(-1.0, -0.2, 20):
+                # Search r with stricter bounds
+                for r in np.linspace(0.1, 2.0, 40):
+                    bB, bA, bcB, bcA = crits(beta, r, p, eps)
+
+                    # Skip if any value is not finite
+                    if not (np.isfinite(bB) and np.isfinite(bA) and np.isfinite(bcA)):
+                        continue
+
+                    # Strict constraints that cannot be relaxed:
+                    # 1. bB > 1
+                    if not (bB > 1.0):
+                        continue
+                    
+                    # 2. bA > bB with visible separation
+                    if not (bA > bB + 0.1):
+                        continue
+                    
+                    # 3. bcA > bA with visible separation
+                    if not (bcA > bA + 0.1):
+                        continue
+                    
+                    # Additional criterion: reasonable ordering and scale
+                    if bB < 2.0 and bA < 3.0 and bcA < 10.0:
+                        candidates.append({
+                            'beta': beta,
+                            'r': r,
+                            'p': p,
+                            'eps': eps,
+                            'bB': bB,
+                            'bA': bA,
+                            'bcA': bcA
+                        })
+
+    return candidates
+
+#----------------------------------------------------------------------Aux 
+"""
+
 # ---------------------------------------------------------------------
 # 6. Main examples
 # ---------------------------------------------------------------------
@@ -451,7 +519,43 @@ def plot_all_scenarios(save: bool = True, outdir: str = ".") -> None:
 
 if __name__ == "__main__":
     # Option 1: reproduce an article-like symmetric sequence, Fig.2 style.
-    #plot_table_scenario("(ii₁)", beta=1.01, r=0.000396, p=0.02, eps=-0.02)
+    plot_table_scenario("(ii₂)", beta=1.1053, r=0.100, p=0.521, eps=-1.000, save=False)
+    plt.show()
+    
 
     # Option 2: generate the seven Table-I visual sequences.
     # plot_all_scenarios(save=True, outdir=".")
+    
+    # Option 3: Search for valid parameter combinations
+    """
+    print("\nSearching for valid parameter combinations...")
+    print("=" * 80)
+    cands = find_params_for_AB_A_Ap_E()
+    
+    print(f"Total candidates found: {len(cands)}")
+    print("=" * 80)
+    
+    # Save first 50 candidates to a file
+    output_file = "valid_parameters.txt"
+    with open(output_file, "w") as f:
+        f.write("Valid Parameter Combinations\n")
+        f.write("=" * 100 + "\n")
+        f.write(f"Total candidates found: {len(cands)}\n")
+        f.write("=" * 100 + "\n\n")
+        f.write("First 50 valid parameter sets:\n")
+        f.write("-" * 100 + "\n")
+        f.write(f"{'#':>3} | {'beta':>7} | {'r':>8} | {'p':>6} | {'eps':>7} | {'bB':>8} | {'bA':>8} | {'bcA':>8}\n")
+        f.write("-" * 100 + "\n")
+        
+        for i, c in enumerate(cands[:50]):
+            f.write(f"{i+1:3d} | {c['beta']:7.4f} | {c['r']:8.5f} | {c['p']:6.3f} | {c['eps']:7.2f} | "
+                   f"{c['bB']:8.5f} | {c['bA']:8.5f} | {c['bcA']:8.5f}\n")
+            print(f"#{i+1:3d}: beta={c['beta']:.4f}, r={c['r']:.5f}, p={c['p']:.3f}, eps={c['eps']:.2f} "
+                  f"→ bB={c['bB']:.5f}, bA={c['bA']:.5f}, bcA={c['bcA']:.5f}")
+    
+    print("\n" + "=" * 80)
+    print(f"Results saved to: {output_file}")
+    print("=" * 80)
+    """
+
+    
