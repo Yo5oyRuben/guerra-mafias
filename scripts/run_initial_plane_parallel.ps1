@@ -73,6 +73,7 @@ $tagParts = @(
   "B_$(Safe-Tag (Get-DefineValue 'B'))",
   "R_$(Safe-Tag (Get-DefineValue 'R'))",
   "E_$(Safe-Tag (Get-DefineValue 'E'))",
+  "TMAX_$(Safe-Tag (Get-DefineValue 'T_MAX'))",
   "ndiv_$NDiv",
   "reps_$NReps"
 )

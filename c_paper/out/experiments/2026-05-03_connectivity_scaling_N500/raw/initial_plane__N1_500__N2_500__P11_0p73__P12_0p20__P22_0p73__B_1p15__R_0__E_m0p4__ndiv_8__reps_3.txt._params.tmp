@@ -1,0 +1,4 @@
+unset label 90
+unset label 91
+set label 90 "N1=500, N2=500, b=1.15, r=0, e=-0.4" at graph 0.02, graph 1.105 left font "Times New Roman,16" tc rgb "#222222"
+set label 91 "P11=0.73, P12=0.2, P22=0.73, ndiv=8, reps=3" at graph 0.02, graph 1.065 left font "Times New Roman,16" tc rgb "#222222"

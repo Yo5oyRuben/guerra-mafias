@@ -1,0 +1,139 @@
+2026-05-06 15:58:07 Cola initial_plane preparada: preset=relaxationCriticalPFineT400k simulaciones=5. Jobs=12 NDiv=8 NReps=3
+2026-05-06 15:58:07 Manifest: c_paper/out/logs/initial_plane_queue_relaxationCriticalPFineT400k_20260506_155807.tsv
+2026-05-06 15:58:07 START 1/5: N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 16:16:56 END 1/5: N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=00:18:48.9919739
+2026-05-06 16:16:56 START 2/5: N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 16:45:33 END 2/5: N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=00:28:36.1859274
+2026-05-06 16:45:33 START 3/5: N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 18:25:32 END 3/5: N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=01:39:59.3600117
+2026-05-06 18:25:32 START 4/5: N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 20:07:20 END 4/5: N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=01:41:48.3212028
+2026-05-06 20:07:20 START 5/5: N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 21:39:04 END 5/5: N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=01:31:44.1020592
+2026-05-06 21:39:04 Cola terminada correctamente.
+2026-05-06 21:39:04 config.h restaurado desde el estado inicial de la cola.
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p70__P12_0p20__P22_0p70__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p715__P12_0p20__P22_0p715__B_1p15__R_0__E_m0p4__TMA
+X_400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p745__P12_0p20__P22_0p745__B_1p15__R_0__E_m0p4__TMA
+X_400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p76__P12_0p20__P22_0p76__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p80__P12_0p20__P22_0p80__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_3.png
+Experimento curado: c_paper/out/experiments/2026-05-06_relaxation_critical_TMAX400k_p_fine
+Simulaciones copiadas: 5
+c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_p_fine: wrote 5 diagnostics to c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_p_fine\diagnostics_time
+2026-05-06 21:39:20 Cola initial_plane preparada: preset=relaxationCriticalNScalingT400k simulaciones=3. Jobs=12 NDiv=8 NReps=3
+2026-05-06 21:39:20 Manifest: c_paper/out/logs/initial_plane_queue_relaxationCriticalNScalingT400k_20260506_213920.tsv
+2026-05-06 21:39:20 START 1/3: N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+2026-05-06 21:55:42 END 1/3: N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3 elapsed=00:16:22.2036841
+2026-05-06 21:55:42 START 2/3: N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Configuracion initial plane: Jobs=12 NDiv=8 NReps=3
+Etiqueta: N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3
+Lanzando job 0: ix=0..0 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_000_ix_000_000.txt
+Lanzando job 1: ix=1..1 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_001_ix_001_001.txt
+Lanzando job 2: ix=2..2 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_002_ix_002_002.txt
+Lanzando job 3: ix=3..3 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_003_ix_003_003.txt
+Lanzando job 4: ix=4..4 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_004_ix_004_004.txt
+Lanzando job 5: ix=5..5 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_005_ix_005_005.txt
+Lanzando job 6: ix=6..6 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_006_ix_006_006.txt
+Lanzando job 7: ix=7..7 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_007_ix_007_007.txt
+Lanzando job 8: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_3\part_008_ix_008_008.txt

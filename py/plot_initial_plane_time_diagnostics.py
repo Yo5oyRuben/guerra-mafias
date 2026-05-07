@@ -41,6 +41,7 @@ class RunInfo:
     b: float | None
     r: float | None
     e: float | None
+    tag_tmax: int | None
     ndiv: int | None
     reps: int | None
 
@@ -64,6 +65,7 @@ def parse_run_info(path: Path) -> RunInfo:
         "b": (r"B_([^_]+)", parse_float_tag),
         "r": (r"R_([^_]+)", parse_float_tag),
         "e": (r"E_([^_]+)", parse_float_tag),
+        "tag_tmax": (r"TMAX_(\d+)", int),
         "ndiv": (r"ndiv_(\d+)", int),
         "reps": (r"reps_(\d+)", int),
     }
@@ -85,7 +87,9 @@ def read_tmax_from_notes(experiment_dir: Path) -> int | None:
     return None
 
 
-def default_tmax(experiment_dir: Path, df: pd.DataFrame) -> int:
+def default_tmax(experiment_dir: Path, df: pd.DataFrame, info: RunInfo | None = None) -> int:
+    if info is not None and info.tag_tmax is not None:
+        return info.tag_tmax
     noted = read_tmax_from_notes(experiment_dir)
     if noted is not None:
         return noted
@@ -133,10 +137,10 @@ def grid_matrix(agg: pd.DataFrame, column: str) -> np.ndarray:
 
 
 def title_for(info: RunInfo) -> str:
-    return (
-        f"N=({info.n1},{info.n2}), P11=P22={info.p11:g}, "
-        f"P12={info.p12:g}, b={info.b:g}"
-    )
+    title = f"N=({info.n1},{info.n2}), P11=P22={info.p11:g}, P12={info.p12:g}, b={info.b:g}"
+    if info.tag_tmax is not None:
+        title += f", TMAX={info.tag_tmax:g}"
+    return title
 
 
 def safe_stem(path: Path) -> str:
@@ -165,7 +169,7 @@ def draw_heat(ax: plt.Axes, matrix: np.ndarray, title: str, cmap: str, vmin: flo
 def plot_run_diagnostics(experiment_dir: Path, raw_path: Path, out_dir: Path) -> dict[str, object]:
     info = parse_run_info(raw_path)
     df = load_run(raw_path)
-    tmax = default_tmax(experiment_dir, df)
+    tmax = default_tmax(experiment_dir, df, info)
     agg = aggregate_grid(df, tmax)
 
     x1 = grid_matrix(agg, "x1_mean")
@@ -208,6 +212,7 @@ def plot_run_diagnostics(experiment_dir: Path, raw_path: Path, out_dir: Path) ->
         "p12": info.p12,
         "p22": info.p22,
         "b": info.b,
+        "tag_tmax": info.tag_tmax,
         "ndiv": info.ndiv,
         "reps": info.reps,
         "tmax": tmax,

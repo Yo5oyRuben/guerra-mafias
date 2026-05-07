@@ -63,6 +63,7 @@ function Get-RunTag($Job) {
     "B_$(Safe-Tag ([string]$Job.B))",
     "R_$(Safe-Tag ([string]$Job.R))",
     "E_$(Safe-Tag ([string]$Job.E))",
+    "TMAX_$(Safe-Tag ([string]$Job.T_MAX))",
     "ndiv_$NDiv",
     "reps_$NReps"
   )
@@ -136,6 +137,87 @@ if ($Preset -eq 'connectivityScaling') {
     [pscustomobject]@{N1='300';  N2='1500'; P11='0.9'; P12='0.03'; P22='0.9'; B='1.10'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
     [pscustomobject]@{N1='1500'; N2='300';  P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
     [pscustomobject]@{N1='1500'; N2='300';  P11='0.9'; P12='0.03'; P22='0.9'; B='1.10'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'}
+  )
+} elseif ($Preset -eq 'relaxationPilot50k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='500';  N2='500';  P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'},
+    [pscustomobject]@{N1='500';  N2='500';  P11='0.90'; P12='0.20'; P22='0.90'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'},
+    [pscustomobject]@{N1='400';  N2='1200'; P11='0.9';  P12='0.02'; P22='0.9';  B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'},
+    [pscustomobject]@{N1='1200'; N2='400';  P11='0.9';  P12='0.02'; P22='0.9';  B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'}
+  )
+} elseif ($Preset -eq 'relaxationLadder') {
+  foreach ($tmax in @('50000', '100000')) {
+    $JobsToRun += @(
+      [pscustomobject]@{N1='500';  N2='500';  P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX=$tmax; W='2000'},
+      [pscustomobject]@{N1='500';  N2='500';  P11='0.90'; P12='0.20'; P22='0.90'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX=$tmax; W='2000'},
+      [pscustomobject]@{N1='400';  N2='1200'; P11='0.9';  P12='0.02'; P22='0.9';  B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX=$tmax; W='2000'},
+      [pscustomobject]@{N1='1200'; N2='400';  P11='0.9';  P12='0.02'; P22='0.9';  B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX=$tmax; W='2000'}
+    )
+  }
+} elseif ($Preset -eq 'relaxationP073T200k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='500'; N2='500'; P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='200000'; W='2000'}
+  )
+} elseif ($Preset -eq 'relaxationP073T400k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='500'; N2='500'; P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='400000'; W='2000'}
+  )
+} elseif ($Preset -eq 'relaxationCriticalPFineT400k') {
+  foreach ($pintra in @('0.70', '0.715', '0.745', '0.76', '0.80')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = $pintra
+      P12 = '0.20'
+      P22 = $pintra
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
+} elseif ($Preset -eq 'relaxationCriticalNScalingT400k') {
+  foreach ($n in @('250', '750', '1000')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = $n
+      N2 = $n
+      P11 = '0.73'
+      P12 = '0.20'
+      P22 = '0.73'
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
+} elseif ($Preset -eq 'relaxationCriticalNScalingRemainingT400k') {
+  foreach ($n in @('750', '1000')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = $n
+      N2 = $n
+      P11 = '0.73'
+      P12 = '0.20'
+      P22 = '0.73'
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
+} elseif ($Preset -eq 'relaxationCriticalAsymT400k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='400';  N2='1200'; P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='400000'; W='2000'},
+    [pscustomobject]@{N1='1200'; N2='400';  P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='400000'; W='2000'}
+  )
+} elseif ($Preset -eq 'relaxationCriticalStatsT400k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='500'; N2='500'; P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='400000'; W='2000'}
   )
 } elseif ($Preset -eq 'lowNAsym') {
   $JobsToRun += @(

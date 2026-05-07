@@ -1,0 +1,8 @@
+La cola relaxationCriticalNScalingT400k fallo con codigo 1073807364
+En C:\Users\rbndz\Movistar Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_relaxation_critica
+l_afternoon_and_curate.ps1: 110 Car cter: 5
++     throw "La cola $Preset fallo con codigo $LASTEXITCODE"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (La cola relaxat...digo 1073807364:String) [], RuntimeException
+    + FullyQualifiedErrorId : La cola relaxationCriticalNScalingT400k fallo con codigo 1073807364
+ 

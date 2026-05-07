@@ -1,0 +1,2 @@
+index	N1	N2	P11	P12	P22	B	R	E	ndiv	reps	output	plot
+1	500	500	0.73	0.20	0.73	1.15	0	-0.4	8	10	c_paper/out/raw/initial_plane/initial_plane__N1_500__N2_500__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_10.txt	c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_400000__ndiv_8__reps_10.png
