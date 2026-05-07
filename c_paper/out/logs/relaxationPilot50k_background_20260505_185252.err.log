@@ -1,0 +1,19 @@
+#< CLIXML
+gnuplot.exe : "c_paper/out/gp/plot_initial_plane.gp" line 70: warning: All points out of range
+En C:\Users\rbndz\Movistar 
+Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_initial_plane_queue.ps1: 263 Car cter: 9
++         & gnuplot -e "infile='$output'; outfile='$plot'" c_paper/out/ ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ("c_paper/out/gp...ts out of range:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+La cola relaxationPilot50k fallo con codigo 1
+En C:\Users\rbndz\Movistar 
+Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_relaxation_pilot_50k_and_curate.ps1: 28 
+Car cter: 3
++   throw "La cola relaxationPilot50k fallo con codigo $LASTEXITCODE"
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (La cola relaxat...lo con codigo 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : La cola relaxationPilot50k fallo con codigo 1
+ 
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04"><Obj S="progress" RefId="0"><TN RefId="0"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparando m¢dulos para el primer uso.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>

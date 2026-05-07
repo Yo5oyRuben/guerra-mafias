@@ -1,0 +1,2 @@
+file	plot	n1	n2	p11	p12	p22	b	tag_tmax	ndiv	reps	tmax	mean_t_frac	max_t_frac	mean_sat_frac	max_sat_frac	points_with_any_saturation	points
+initial_plane__N1_500__N2_500__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_200000__ndiv_8__reps_3.txt	N1_500__N2_500__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_200000__ndiv_8__reps_3__time_diagnostic.png	500	500	0.73	0.2	0.73	1.15	200000	8	3	200000	0.4246090534979424	1.0	0.25514403292181065	1.0	37	81

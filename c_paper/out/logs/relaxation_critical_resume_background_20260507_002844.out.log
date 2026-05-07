@@ -1,0 +1,28 @@
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_250__N2_250__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_750__N2_750__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_1000__N2_1000__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMA
+X_400000__ndiv_8__reps_3.png
+Experimento curado: c_paper/out/experiments/2026-05-06_relaxation_critical_TMAX400k_n_scaling
+Simulaciones copiadas: 3
+c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_n_scaling: wrote 3 diagnostics to c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_n_scaling\diagnostics_time
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_400__N2_1200__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX
+_400000__ndiv_8__reps_3.png
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_1200__N2_400__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX
+_400000__ndiv_8__reps_3.png
+Experimento curado: c_paper/out/experiments/2026-05-06_relaxation_critical_TMAX400k_asym
+Simulaciones copiadas: 2
+c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_asym: wrote 2 diagnostics to c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_asym\diagnostics_time
+ADVERTENCIA: No existe plot: 
+c_paper/out/plots/initial_plane/initial_plane__N1_500__N2_500__P11_0p73__P12_0p20__P22_0p73__B_1p15__R_0__E_m0p4__TMAX_
+400000__ndiv_8__reps_10.png
+Experimento curado: c_paper/out/experiments/2026-05-06_relaxation_critical_TMAX400k_stats_reps10
+Simulaciones copiadas: 
+c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_stats_reps10: wrote 1 diagnostics to c_paper\out\experiments\2026-05-06_relaxation_critical_TMAX400k_stats_reps10\diagnostics_time
+Reanudacion critica completa.

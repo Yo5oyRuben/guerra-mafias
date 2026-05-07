@@ -11,6 +11,10 @@
 # The script creates two temporary files next to the input:
 #   _initial_plane_points.tmp
 #   _initial_plane_fixed_points.tmp
+#
+# Optional:
+#   tmax=<integer> fixes the color scale as t_relax/T_MAX. If omitted,
+#   the maximum observed t_relax in the input is used.
 
 if (!exists("infile") && !exists("indir")) {
     print "ERROR: define infile with the joined scan file, or indir with the folder containing part_*.txt files."
@@ -23,31 +27,32 @@ if (!exists("outfile")) {
     outfile = "c_paper/out/plots/initial_plane/initial_plane.png"
 }
 
-if (exists("infile")) {
-    points_tmp = infile . "._points.tmp"
-    fixed_tmp = infile . "._fixed_points.tmp"
-} else {
-    points_tmp = indir . "/_initial_plane_points.tmp"
-    fixed_tmp = indir . "/_initial_plane_fixed_points.tmp"
-}
+tmp_base = "c_paper/out/gp/_initial_plane_plot"
+points_tmp = tmp_base . "_points.tmp"
+fixed_tmp = tmp_base . "_fixed_points.tmp"
+params_tmp = tmp_base . "_params.gp"
 
 plotdir = "c_paper/out/plots/initial_plane"
 if (exists("infile")) {
-    prepare_cmd = sprintf("powershell -NoProfile -ExecutionPolicy Bypass -File c_paper/out/gp/prepare_initial_plane_plot.ps1 -Infile \"%s\" -Points \"%s\" -Fixed \"%s\" -PlotDir \"%s\"", infile, points_tmp, fixed_tmp, plotdir)
+    prepare_cmd = sprintf("powershell -NoProfile -ExecutionPolicy Bypass -File c_paper/out/gp/prepare_initial_plane_plot.ps1 -Infile \"%s\" -Points \"%s\" -Fixed \"%s\" -Params \"%s\" -PlotDir \"%s\"", infile, points_tmp, fixed_tmp, params_tmp, plotdir)
 } else {
-    prepare_cmd = sprintf("powershell -NoProfile -ExecutionPolicy Bypass -File c_paper/out/gp/prepare_initial_plane_plot.ps1 -Indir \"%s\" -Points \"%s\" -Fixed \"%s\" -PlotDir \"%s\"", indir, points_tmp, fixed_tmp, plotdir)
+    prepare_cmd = sprintf("powershell -NoProfile -ExecutionPolicy Bypass -File c_paper/out/gp/prepare_initial_plane_plot.ps1 -Indir \"%s\" -Points \"%s\" -Fixed \"%s\" -Params \"%s\" -PlotDir \"%s\"", indir, points_tmp, fixed_tmp, params_tmp, plotdir)
 }
 system(prepare_cmd)
 
 set terminal pngcairo size 1100,1000 enhanced font "Times New Roman,22"
 set output outfile
 
+if (exists("params_tmp")) {
+    load params_tmp
+}
+
 set xlabel "x_1(0)"
 set ylabel "x_2(0)"
-set cblabel "x_1(\\305)"
+set cblabel "t_{relax}/T_{MAX}"
 
 set xrange [-0.03:1.03]
-set yrange [-0.03:1.03]
+set yrange [-0.03:1.12]
 set cbrange [0:1]
 set size square
 
@@ -59,10 +64,15 @@ set grid xtics ytics lc rgb "#dddddd" lw 1
 
 set palette defined (0 "#313695", 0.25 "#74add1", 0.5 "#ffffbf", 0.75 "#f46d43", 1 "#a50026")
 
-set key outside top center horizontal maxrows 1 samplen 1.5
+set key outside bottom center horizontal maxrows 1 samplen 1.5
+
+if (!exists("tmax")) {
+    stats points_tmp using 10 nooutput
+    tmax = STATS_max
+}
 
 plot \
     points_tmp using 3:4 with points pt 7 ps 0.35 lc rgb "#bbbbbb" title "initial", \
-    points_tmp using 6:7:6 with points pt 7 ps 0.65 palette title "final", \
+    points_tmp using 6:7:($10/tmax) with points pt 7 ps 0.70 palette title "final, color=time", \
     fixed_tmp using 2:3 with points pt 6 ps 2.2 lw 2 lc rgb "black" title "analytic fixed points", \
     fixed_tmp using 2:3:1 with labels offset char 0.8,0.8 font "Times New Roman,18" tc rgb "black" notitle
