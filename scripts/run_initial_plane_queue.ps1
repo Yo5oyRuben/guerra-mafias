@@ -119,6 +119,38 @@ if ($Preset -eq 'connectivityScaling') {
       W = '2000'
     }
   }
+} elseif ($Preset -eq 'torreCriticalP12ScanT400k') {
+  foreach ($p12 in @('0.05', '0.10', '0.15', '0.25', '0.30', '0.40')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = '0.73'
+      P12 = $p12
+      P22 = '0.73'
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
+} elseif ($Preset -eq 'torreCriticalBScanT400k') {
+  foreach ($b in @('1.05', '1.10', '1.20', '1.30')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = '0.73'
+      P12 = '0.20'
+      P22 = '0.73'
+      B = $b
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
 } elseif ($Preset -eq 'highNAsym') {
   $JobsToRun += @(
     [pscustomobject]@{N1='200'; N2='600'; P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
