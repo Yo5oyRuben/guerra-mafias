@@ -63,8 +63,19 @@
 #define SAVE_SERIES 0
 #endif
 
+/*usar probabilidad de copia lineal o fermi. 1 es de fermi. 0 es lineal*/
+#ifndef UPDATE_RULE
+#define UPDATE_RULE 0
+#endif
+
+#ifndef FERMI_BETA
+#define FERMI_BETA 1.0
+#endif
+
 
 #endif
+
+
 
 
 
