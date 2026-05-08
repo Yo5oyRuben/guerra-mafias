@@ -151,6 +151,24 @@ if ($Preset -eq 'connectivityScaling') {
       W = '2000'
     }
   }
+} elseif ($Preset -eq 'torreCriticalP11P12GridT400k') {
+  foreach ($p12 in @('0.16', '0.20', '0.24')) {
+    foreach ($pintra in @('0.65', '0.70', '0.73', '0.76', '0.80')) {
+      $JobsToRun += [pscustomobject]@{
+        N1 = '500'
+        N2 = '500'
+        P11 = $pintra
+        P12 = $p12
+        P22 = $pintra
+        B = '1.15'
+        R = '0'
+        E = '-0.4'
+        T_MCS = '1000'
+        T_MAX = '400000'
+        W = '2000'
+      }
+    }
+  }
 } elseif ($Preset -eq 'highNAsym') {
   $JobsToRun += @(
     [pscustomobject]@{N1='200'; N2='600'; P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
