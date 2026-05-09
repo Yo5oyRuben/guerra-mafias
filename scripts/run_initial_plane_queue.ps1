@@ -178,6 +178,22 @@ if ($Preset -eq 'connectivityScaling') {
       W = '2000'
     }
   }
+} elseif ($Preset -eq 'relaxationCriticalPNarrowT400k') {
+  foreach ($pintra in @('0.720', '0.725', '0.735', '0.740')) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = $pintra
+      P12 = '0.20'
+      P22 = $pintra
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
 } elseif ($Preset -eq 'relaxationCriticalNScalingT400k') {
   foreach ($n in @('250', '750', '1000')) {
     $JobsToRun += [pscustomobject]@{

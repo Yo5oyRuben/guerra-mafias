@@ -84,6 +84,8 @@ int main(int argc, char **argv)
     fprintf(out, "# k22 %.12g\n", (double)P22 * (N2 - 1.0));
     fprintf(out, "# R %.12g\n", (double)R);
     fprintf(out, "# E %.12g\n", (double)E);
+    fprintf(out, "# UPDATE_RULE %d\n", UPDATE_RULE);
+    fprintf(out, "# FERMI_BETA %.12g\n", (double)FERMI_BETA);
     fprintf(out, "# x01 %.12g\n", x01);
     fprintf(out, "# x02 %.12g\n", x02);
     fprintf(out, "# reps %d\n", reps);
