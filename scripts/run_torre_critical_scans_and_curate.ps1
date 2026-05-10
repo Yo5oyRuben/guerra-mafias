@@ -1,9 +1,10 @@
 param(
-  [ValidateSet('all', 'p12', 'b', 'grid', 'refine')]
+  [ValidateSet('all', 'p12', 'b', 'grid', 'refine', 'frontier', 'robust', 'followup')]
   [string]$Scan = 'all',
   [int]$Jobs = 9,
   [int]$NDiv = 8,
-  [int]$NReps = 3
+  [int]$NReps = 3,
+  [switch]$SkipExisting
 )
 
 $ErrorActionPreference = 'Stop'
@@ -40,8 +41,20 @@ function Invoke-Scan($Spec) {
   Get-ChildItem -LiteralPath $LogDir -Filter "initial_plane_queue_$($Spec.Preset)_*.tsv" -ErrorAction SilentlyContinue |
     ForEach-Object { $before[$_.FullName] = $true }
 
-  & powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_initial_plane_queue.ps1 `
-    -Preset $Spec.Preset -Jobs $Jobs -NDiv $NDiv -NReps $NReps -NoPlot
+  $queueArgs = @(
+    '-NoProfile', '-ExecutionPolicy', 'Bypass',
+    '-File', 'scripts/run_initial_plane_queue.ps1',
+    '-Preset', $Spec.Preset,
+    '-Jobs', $Jobs,
+    '-NDiv', $NDiv,
+    '-NReps', $NReps,
+    '-NoPlot'
+  )
+  if ($SkipExisting) {
+    $queueArgs += '-SkipExisting'
+  }
+
+  & powershell @queueArgs
 
   if ($LASTEXITCODE -ne 0) {
     throw "La cola $($Spec.Preset) fallo con codigo $LASTEXITCODE"
@@ -166,6 +179,69 @@ NReps = 3
 P12 values = 0.21, 0.22, 0.23
 P11 = P22 values = 0.70, 0.73, 0.76, 0.80
 Purpose: refine the P11-P12 transition boundary suggested by the coarse grid.
+'@
+  },
+  [pscustomobject]@{
+    Key = 'frontier'
+    Preset = 'torreCriticalHighP11FrontierT400k'
+    Experiment = 'torre_2026-05-08_high_p11_frontier_TMAX400k'
+    Title = 'Torre high-P11 frontier at B=1.15, TMAX400k'
+    Question = 'Does the critical boundary persist at higher P11 as P12 approaches 0.23?'
+    Notes = @'
+T_MAX = 400000
+N1 = N2 = 500
+B = 1.15
+R = 0
+E = -0.4
+NDiv = 8
+NReps = 3
+P12 = 0.21 with P11 = P22 = 0.77, 0.78, 0.79, 0.80
+P12 = 0.22 with P11 = P22 = 0.79, 0.80, 0.82, 0.84
+P12 = 0.23 with P11 = P22 = 0.80, 0.83, 0.86, 0.90
+Purpose: follow the transition boundary toward high P11.
+'@
+  },
+  [pscustomobject]@{
+    Key = 'robust'
+    Preset = 'torreCriticalBoundaryRobustT400k'
+    Experiment = 'torre_2026-05-08_boundary_robust_TMAX400k'
+    Title = 'Torre boundary robustness checks at B=1.15, TMAX400k'
+    Question = 'Are selected near-boundary signals stable with higher replication?'
+    Notes = @'
+T_MAX = 400000
+N1 = N2 = 500
+B = 1.15
+R = 0
+E = -0.4
+NDiv = 8
+NReps = 5
+Points:
+- P12 = 0.21, P11 = P22 = 0.80
+- P12 = 0.22, P11 = P22 = 0.80
+- P12 = 0.22, P11 = P22 = 0.82
+- P12 = 0.23, P11 = P22 = 0.86
+Purpose: higher-statistics checks near the inferred boundary.
+'@
+  },
+  [pscustomobject]@{
+    Key = 'followup'
+    Preset = 'torreCriticalFrontierFollowupT400k'
+    Experiment = 'torre_2026-05-09_frontier_followup_TMAX400k'
+    Title = 'Torre frontier follow-up at B=1.15, TMAX400k'
+    Question = 'Can the P11=P22 critical boundary be localized more tightly for P12=0.22, 0.23, and 0.24?'
+    Notes = @'
+T_MAX = 400000
+N1 = N2 = 500
+B = 1.15
+R = 0
+E = -0.4
+NDiv = 8
+NReps = 3
+Points:
+- P12 = 0.22, P11 = P22 = 0.81
+- P12 = 0.23, P11 = P22 = 0.84, 0.85
+- P12 = 0.24, P11 = P22 = 0.86, 0.88, 0.90
+Purpose: follow the inferred P11-P12 critical boundary with a compact overnight package.
 '@
   }
 )

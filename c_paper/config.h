@@ -2,10 +2,10 @@
 #define CONFIG_H
 
 #ifndef N1
-#define N1 400
+#define N1 500
 #endif
 #ifndef N2
-#define N2 1200
+#define N2 500
 #endif
 #define NTOT (N1 + N2)
 
@@ -13,7 +13,7 @@
 #define T_MCS 1000
 #endif
 #ifndef T_MAX
-#define T_MAX 25000
+#define T_MAX 400000
 #endif
 #ifndef W
 #define W 2000
@@ -24,13 +24,13 @@
 
 /* Parametros ER por bloques */
 #ifndef P11
-#define P11 0.9
+#define P11 0.80
 #endif
 #ifndef P12
-#define P12 0.02
+#define P12 0.22
 #endif
 #ifndef P22
-#define P22 0.9
+#define P22 0.80
 #endif
 
 /*parametros de lambda*/
@@ -41,7 +41,7 @@
 #define E -0.4
 #endif
 #ifndef B
-#define B 1.06
+#define B 1.15
 #endif
 #ifndef BMIN
 #define BMIN 1
@@ -55,7 +55,7 @@
 #define N_INI_NDIV 8
 #endif
 #ifndef N_INI_COND
-#define N_INI_COND 3
+#define N_INI_COND 5
 #endif
 
 /*para debug*/
@@ -65,6 +65,10 @@
 
 
 #endif
+
+
+
+
 
 
 

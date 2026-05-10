@@ -1,0 +1,6 @@
+2026-05-08 20:44:58 Cola initial_plane preparada: preset=torreCriticalHighP11FrontierT400k simulaciones=12. Jobs=9 NDiv=8 NReps=3
+2026-05-08 20:44:58 Manifest: c_paper/out/logs/initial_plane_queue_torreCriticalHighP11FrontierT400k_20260508_204457.tsv
+2026-05-08 20:44:58 START 1/12: N1_500__N2_500__P11_0p77__P12_0p21__P22_0p77__B_1p15__R_0__E_m0p4__ndiv_8__reps_3
+Configuracion initial plane: Jobs=9 NDiv=8 NReps=3
+Etiqueta: N1_500__N2_500__P11_0p77__P12_0p21__P22_0p77__B_1p15__R_0__E_m0p4__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_500__N2_500__P11_0p77__P12_0p21__P22_0p77__B_1p15__R_0__E_m0p4__ndiv_8__reps_3

@@ -5,7 +5,8 @@ param(
   [int]$MaxRuns = -1,
   [string]$Preset = 'default',
   [switch]$DryRun,
-  [switch]$NoPlot
+  [switch]$NoPlot,
+  [switch]$SkipExisting
 )
 
 $ErrorActionPreference = 'Stop'
@@ -187,6 +188,72 @@ if ($Preset -eq 'connectivityScaling') {
       }
     }
   }
+} elseif ($Preset -eq 'torreCriticalHighP11FrontierT400k') {
+  foreach ($entry in @(
+    [pscustomobject]@{P12='0.21'; P11s=@('0.77', '0.78', '0.79', '0.80')},
+    [pscustomobject]@{P12='0.22'; P11s=@('0.79', '0.80', '0.82', '0.84')},
+    [pscustomobject]@{P12='0.23'; P11s=@('0.80', '0.83', '0.86', '0.90')}
+  )) {
+    foreach ($pintra in $entry.P11s) {
+      $JobsToRun += [pscustomobject]@{
+        N1 = '500'
+        N2 = '500'
+        P11 = $pintra
+        P12 = $entry.P12
+        P22 = $pintra
+        B = '1.15'
+        R = '0'
+        E = '-0.4'
+        T_MCS = '1000'
+        T_MAX = '400000'
+        W = '2000'
+      }
+    }
+  }
+} elseif ($Preset -eq 'torreCriticalBoundaryRobustT400k') {
+  foreach ($job in @(
+    [pscustomobject]@{P12='0.21'; P11='0.80'},
+    [pscustomobject]@{P12='0.22'; P11='0.80'},
+    [pscustomobject]@{P12='0.22'; P11='0.82'},
+    [pscustomobject]@{P12='0.23'; P11='0.86'}
+  )) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = $job.P11
+      P12 = $job.P12
+      P22 = $job.P11
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
+} elseif ($Preset -eq 'torreCriticalFrontierFollowupT400k') {
+  foreach ($job in @(
+    [pscustomobject]@{P12='0.22'; P11='0.81'},
+    [pscustomobject]@{P12='0.23'; P11='0.84'},
+    [pscustomobject]@{P12='0.23'; P11='0.85'},
+    [pscustomobject]@{P12='0.24'; P11='0.86'},
+    [pscustomobject]@{P12='0.24'; P11='0.88'},
+    [pscustomobject]@{P12='0.24'; P11='0.90'}
+  )) {
+    $JobsToRun += [pscustomobject]@{
+      N1 = '500'
+      N2 = '500'
+      P11 = $job.P11
+      P12 = $job.P12
+      P22 = $job.P11
+      B = '1.15'
+      R = '0'
+      E = '-0.4'
+      T_MCS = '1000'
+      T_MAX = '400000'
+      W = '2000'
+    }
+  }
 } elseif ($Preset -eq 'highNAsym') {
   $JobsToRun += @(
     [pscustomobject]@{N1='200'; N2='600'; P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
@@ -290,6 +357,12 @@ try {
     $tag = Get-RunTag $job
     $output = "$Base/out/raw/initial_plane/initial_plane__$tag.txt"
     $plot = "$Base/out/plots/initial_plane/initial_plane__$tag.png"
+
+    if ($SkipExisting -and (Test-Path -LiteralPath $output) -and ((Get-Item -LiteralPath $output).Length -gt 0)) {
+      Write-Log "SKIP $($i + 1)/$($JobsToRun.Count): $tag output existente=$output"
+      continue
+    }
+
     $sw = [Diagnostics.Stopwatch]::StartNew()
 
     Write-Log "START $($i + 1)/$($JobsToRun.Count): $tag"
