@@ -51,6 +51,11 @@ set xlabel "x_1(0)"
 set ylabel "x_2(0)"
 set cblabel "t_{relax}/T_{MAX}"
 
+if (!exists("tmax")) {
+    stats points_tmp using 10 nooutput
+    tmax = STATS_max
+}
+
 set xrange [-0.03:1.03]
 set yrange [-0.03:1.12]
 set cbrange [0:1]
@@ -65,11 +70,6 @@ set grid xtics ytics lc rgb "#dddddd" lw 1
 set palette defined (0 "#313695", 0.25 "#74add1", 0.5 "#ffffbf", 0.75 "#f46d43", 1 "#a50026")
 
 set key outside bottom center horizontal maxrows 1 samplen 1.5
-
-if (!exists("tmax")) {
-    stats points_tmp using 10 nooutput
-    tmax = STATS_max
-}
 
 plot \
     points_tmp using 3:4 with points pt 7 ps 0.35 lc rgb "#bbbbbb" title "initial", \

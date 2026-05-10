@@ -4,6 +4,9 @@ param(
   [int]$NReps = 5,
   [int]$MaxRuns = -1,
   [string]$Preset = 'default',
+  [ValidateSet(0,1)]
+  [int]$UpdateRule = 0,
+  [double]$FermiBeta = 1.0,
   [switch]$DryRun,
   [switch]$NoPlot,
   [switch]$SkipExisting
@@ -65,6 +68,8 @@ function Get-RunTag($Job) {
     "R_$(Safe-Tag ([string]$Job.R))",
     "E_$(Safe-Tag ([string]$Job.E))",
     "TMAX_$(Safe-Tag ([string]$Job.T_MAX))",
+    "rule_$(if ($UpdateRule -eq 1) { 'fermi' } else { 'linear' })",
+    "beta_$(Safe-Tag ([string]$FermiBeta))",
     "ndiv_$NDiv",
     "reps_$NReps"
   )
@@ -273,6 +278,19 @@ if ($Preset -eq 'connectivityScaling') {
     [pscustomobject]@{N1='1500'; N2='300';  P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
     [pscustomobject]@{N1='1500'; N2='300';  P11='0.9'; P12='0.03'; P22='0.9'; B='1.10'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'}
   )
+} elseif ($Preset -eq 'fermiThermoTargeted') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='700'; N2='700'; P11='0.9'; P12='0.05'; P22='0.9'; B='1.02'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'},
+    [pscustomobject]@{N1='800'; N2='300'; P11='0.9'; P12='0.02'; P22='0.9'; B='1.06'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='25000'; W='2000'}
+  )
+} elseif ($Preset -eq 'fermiSymmetricEDeepT100k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='400'; N2='400'; P11='0.9'; P12='0.3'; P22='0.9'; B='1.3'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='100000'; W='2000'}
+  )
+} elseif ($Preset -eq 'fermiSymmetricEDeepT50k') {
+  $JobsToRun += @(
+    [pscustomobject]@{N1='400'; N2='400'; P11='0.9'; P12='0.3'; P22='0.9'; B='1.3'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'}
+  )
 } elseif ($Preset -eq 'relaxationPilot50k') {
   $JobsToRun += @(
     [pscustomobject]@{N1='500';  N2='500';  P11='0.73'; P12='0.20'; P22='0.73'; B='1.15'; R='0'; E='-0.4'; T_MCS='1000'; T_MAX='50000'; W='2000'},
@@ -416,7 +434,7 @@ if ($MaxRuns -ge 0 -and $MaxRuns -lt $JobsToRun.Count) {
   $JobsToRun = @($JobsToRun | Select-Object -First $MaxRuns)
 }
 
-"index`tN1`tN2`tP11`tP12`tP22`tB`tR`tE`tndiv`treps`toutput`tplot" |
+"index`tN1`tN2`tP11`tP12`tP22`tB`tR`tE`tupdate_rule`tfermi_beta`tndiv`treps`toutput`tplot" |
   Set-Content -Encoding ASCII -LiteralPath $ManifestPath
 
 for ($i = 0; $i -lt $JobsToRun.Count; $i++) {
@@ -428,12 +446,12 @@ for ($i = 0; $i -lt $JobsToRun.Count; $i++) {
   $tag = Get-RunTag $job
   $output = "$Base/out/raw/initial_plane/initial_plane__$tag.txt"
   $plot = "$Base/out/plots/initial_plane/initial_plane__$tag.png"
-  "{0}`t{1}`t{2}`t{3}`t{4}`t{5}`t{6}`t{7}`t{8}`t{9}`t{10}`t{11}`t{12}" -f `
-    ($i + 1), $n1, $n2, $job.P11, $job.P12, $job.P22, $job.B, $job.R, $job.E, $NDiv, $NReps, $output, $plot |
+  "{0}`t{1}`t{2}`t{3}`t{4}`t{5}`t{6}`t{7}`t{8}`t{9}`t{10}`t{11}`t{12}`t{13}`t{14}" -f `
+    ($i + 1), $n1, $n2, $job.P11, $job.P12, $job.P22, $job.B, $job.R, $job.E, $UpdateRule, $FermiBeta, $NDiv, $NReps, $output, $plot |
     Add-Content -Encoding ASCII -LiteralPath $ManifestPath
 }
 
-Write-Log "Cola initial_plane preparada: preset=$Preset simulaciones=$($JobsToRun.Count). Jobs=$Jobs NDiv=$NDiv NReps=$NReps"
+Write-Log "Cola initial_plane preparada: preset=$Preset simulaciones=$($JobsToRun.Count). Jobs=$Jobs NDiv=$NDiv NReps=$NReps UpdateRule=$UpdateRule FermiBeta=$FermiBeta"
 Write-Log "Manifest: $ManifestPath"
 
 if ($DryRun) {
@@ -479,6 +497,8 @@ try {
     $cfg = Set-DefineValue $cfg 'B' ([string]$job.B)
     $cfg = Set-DefineValue $cfg 'N_INI_NDIV' ([string]$NDiv)
     $cfg = Set-DefineValue $cfg 'N_INI_COND' ([string]$NReps)
+    $cfg = Set-DefineValue $cfg 'UPDATE_RULE' ([string]$UpdateRule)
+    $cfg = Set-DefineValue $cfg 'FERMI_BETA' ([string]::Format([Globalization.CultureInfo]::InvariantCulture, "{0:G17}", $FermiBeta))
     $cfg | Set-Content -Encoding ASCII -LiteralPath $ConfigPath
 
     & powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_initial_plane_parallel.ps1 `

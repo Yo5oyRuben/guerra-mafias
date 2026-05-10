@@ -1,0 +1,30 @@
+2026-05-10 13:11:16 Cola initial_plane preparada: preset=fermiThermoTargeted simulaciones=2. Jobs=8 NDiv=8 NReps=3 UpdateRule=1 FermiBeta=5
+2026-05-10 13:11:16 Manifest: c_paper/out/logs/initial_plane_queue_fermiThermoTargeted_20260510_131116.tsv
+2026-05-10 13:11:16 START 1/2: N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3
+Configuracion initial plane: Jobs=8 NDiv=8 NReps=3
+Etiqueta: N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+Lanzando job 0: ix=0..1 -> c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_000_ix_000_001.txt
+Lanzando job 1: ix=2..3 -> c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_001_ix_002_003.txt
+Lanzando job 2: ix=4..5 -> c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_002_ix_004_005.txt
+Lanzando job 3: ix=6..7 -> c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_003_ix_006_007.txt
+Lanzando job 4: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_004_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+2026-05-10 13:24:41 END 1/2: N1_700__N2_700__P11_0p9__P12_0p05__P22_0p9__B_1p02__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3 elapsed=00:13:24.7745514
+2026-05-10 13:24:41 START 2/2: N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3
+Configuracion initial plane: Jobs=8 NDiv=8 NReps=3
+Etiqueta: N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+Lanzando job 0: ix=0..1 -> c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_000_ix_000_001.txt
+Lanzando job 1: ix=2..3 -> c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_001_ix_002_003.txt
+Lanzando job 2: ix=4..5 -> c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_002_ix_004_005.txt
+Lanzando job 3: ix=6..7 -> c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_003_ix_006_007.txt
+Lanzando job 4: ix=8..8 -> c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3\part_004_ix_008_008.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_8__reps_3
+2026-05-10 13:37:45 END 2/2: N1_800__N2_300__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_8__reps_3 elapsed=00:13:03.9090727
+2026-05-10 13:37:45 Cola terminada correctamente.
+2026-05-10 13:37:45 config.h restaurado desde el estado inicial de la cola.
