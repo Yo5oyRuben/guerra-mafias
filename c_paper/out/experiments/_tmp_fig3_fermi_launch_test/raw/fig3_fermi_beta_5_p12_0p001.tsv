@@ -1,0 +1,23 @@
+# N1 1000
+# N2 1000
+# T_MCS 10
+# T_MAX 20
+# W 10
+# NDIV 2
+# P11 0.00600600600601
+# P12 0.001
+# P22 0.00600600600601
+# k11 6
+# k22 6
+# R 0
+# E -0.4
+# UPDATE_RULE 1
+# FERMI_BETA 5
+# x01 0.5
+# x02 0.5
+# reps 1
+# seed 620001
+# independence graph_per_b_rep
+# b x1_mean x1_sem x2_mean x2_sem c_mean c_sem
+1	0.6009	0	0.6988	0	0.64985	0
+3	0.001	0	0.002	0	0.0015	0

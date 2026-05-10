@@ -1,0 +1,7 @@
+time	message
+2026-05-09T14:17:31	starting fig3 fermi sweep; beta=5; independence=graph_per_b_rep
+2026-05-09T14:17:32	started 1/7 fig3_fermi p12=0 pid=25956
+2026-05-09T14:17:32	started 2/7 fig3_fermi p12=0.001 pid=26032
+2026-05-09T14:17:32	started 3/7 fig3_fermi p12=0.002 pid=8624
+2026-05-10T05:34:37	finished 1/7 fig3_fermi p12=0 exit=
+2026-05-10T05:34:37	started 4/7 fig3_fermi p12=0.005 pid=38448
