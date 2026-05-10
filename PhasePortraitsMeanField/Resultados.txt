@@ -1,0 +1,352 @@
+========================================================================
+TABLE-I SCENARIO (i)
+parameters: beta=1.25, r=0.16, p=0.3, eps=-0.4
+critical values: bup_B=1.096, bup_A=1.15, bc_B=0.2, bc_A=1.18182, rc_A=0.15, rc_B=0.096
+========================================================================
+
+b=1.0485 | expected attractor set: D,A,B
+No LC: Bendixson-Dulac, strict positive divergence in the open square.
+   D at (0.00000, 0.00000) |      stable node | eigs: -0.08+0i, -0.01+0i
+  A' at (0.00000, 0.08969) |           saddle | eigs: +0.0091+0i, -0.0921+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.215+0i, -0.101+0i
+  B' at (0.57399, 0.00000) |           saddle | eigs: +0.0341+0i, -0.107+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.178+0i, -0.0594+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.0752+0i, +0.0667+0i
+
+b=1.123 | expected attractor set: D,A
+No LC: Bendixson-Dulac, strict positive divergence in the open square.
+   D at (0.00000, 0.00000) |      stable node | eigs: -0.08+0i, -0.01+0i
+  A' at (0.00000, 0.27027) |           saddle | eigs: +0.0073+0i, -0.122+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.237+0i, -0.027+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.0337+0i, -0.206+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.169+0i, +0.191+0i
+
+b=1.242 | expected attractor set: D
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |      stable node | eigs: -0.08+0i, -0.01+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.273+0i, +0.092+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.182+0i, -0.251+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.375+0i, +0.333+0i
+
+Saved: ./scenario_(i)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (ii₂)
+parameters: beta=1.01, r=0.000396, p=0.02, eps=-0.02
+critical values: bup_B=1.0004, bup_A=1.0004, bc_B=1.0004, bc_A=0.973201, rc_A=0.000404, rc_B=0.00039604
+========================================================================
+
+b=1.0007 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +4e-08+0i, +8e-06+0i
+  A' at (0.00000, 0.02649) |      stable node | eigs: -1.09e-05+0i, -7.79e-06+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.000414+0i, +0.000294+0i
+  B' at (0.00013, 0.00000) |           saddle | eigs: -4e-08+0i, +7.95e-06+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.000305+0i, -0.00041+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.000719+0i, +0.000712+0i
+
+b=1.0004 | expected attractor set: A
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +4e-08+0i, +8e-06+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.000408+0i, -3.98e-06+0i
+  B' at (0.00985, 0.00000) |           saddle | eigs: -3.96e-08+0i, +3.94e-06+0i
+  B' at (0.01941, 0.00000) |   non-hyperbolic | eigs: -1.15e-07+0i, -3.83e-10+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +4.02e-06+0i, -0.000404+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.000412+0i, +0.000408+0i
+
+b=0.986803 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict positive divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +4e-08+0i, +8e-06+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.000136+0i, -0.0136+0i
+   E at (0.00991, 1.00000) |           saddle | eigs: +0.000135+0i, -0.0136+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.0137+0i, -0.000129+0i
+   E at (1.00000, 0.00952) |           saddle | eigs: +0.000128+0i, -0.0137+0i
+   C at (1.00000, 1.00000) |      stable node | eigs: -0.0136+0i, -0.0135+0i
+
+b=1.05106 | expected attractor set: E
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +4e-08+0i, +8e-06+0i
+  A' at (0.00000, 0.00016) |      stable node | eigs: -8e-06+0i, -1.84e-07+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.00142+0i, +0.0507+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: -0.00143+0i, +0.0512+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.0521+0i, +0.0526+0i
+
+Saved: ./scenario_(ii₂)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (ii₁)
+parameters: beta=1.5, r=0.316, p=0.8, eps=-1.0
+critical values: bup_B=1.53333, bup_A=2.2, bc_B=1.86673, bc_A=-1.12544, rc_A=1.2, rc_B=0.533333
+========================================================================
+
+b=1.26717 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict positive divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.326+0i, +0.884+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.688+0i, -0.933+0i
+   E at (0.59305, 0.36444) |           saddle | eigs: +0.308+0i, -0.279+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.399+0i, -0.637+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.614+0i, +0.588+0i
+
+b=1.86667 | expected attractor set: A
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.326+0i, +0.884+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -1.17+0i, -0.333+0i
+   E at (0.39464, 0.00002) |           saddle | eigs: -0.197+0i, +6.78e-05+0i
+  B' at (0.39467, 0.00000) |      stable node | eigs: -0.197+0i, -6.78e-05+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.5+0i, -1.36+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +1.99+0i, +1.91+0i
+
+b=2.376 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.326+0i, +0.884+0i
+  A' at (0.00000, 0.83396) |      stable node | eigs: -0.147+0i, -1.26+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -1.57+0i, +0.176+0i
+  B' at (0.20503, 0.00000) |           saddle | eigs: -0.259+0i, +0.299+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +1.26+0i, -1.97+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +3.03+0i, +3.16+0i
+
+Saved: ./scenario_(ii₁)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (iii₁)
+parameters: beta=2.0, r=0.03, p=0.6, eps=-1.0
+critical values: bup_B=1.3, bup_A=2.2, bc_B=1.42447, bc_A=-3.43333, rc_A=1.2, rc_B=0.3
+========================================================================
+
+b=1.1505 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.54+0i, +1.17+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.15+0i, -1.05+0i
+   E at (0.80367, 0.50169) |           saddle | eigs: -0.228+0i, +0.16+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.299+0i, -0.211+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.391+0i, +0.331+0i
+
+b=1.36223 | expected attractor set: A,B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.54+0i, +1.17+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.277+0i, -0.838+0i
+   E at (0.69655, 0.09441) |           saddle | eigs: -0.25+0i, +0.0808+0i
+  B' at (0.81268, 0.00000) |      stable node | eigs: -0.101+0i, -0.158+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: -0.465+0i, +0.124+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.797+0i, +0.942+0i
+
+b=1.81223 | expected attractor set: A
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.54+0i, +1.17+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.547+0i, -0.388+0i
+  B' at (0.34517, 0.00000) |           saddle | eigs: -0.354+0i, +0.419+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +1.02+0i, -1+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +2.11+0i, +1.79+0i
+
+b=2.376 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.54+0i, +1.17+0i
+  A' at (0.00000, 0.86924) |      stable node | eigs: -0.699+0i, -0.153+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.886+0i, +0.176+0i
+  B' at (0.20059, 0.00000) |           saddle | eigs: -0.432+0i, +0.598+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +2.15+0i, -1.68+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +3.03+0i, +3.58+0i
+
+Saved: ./scenario_(iii₁)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (iii₂)
+parameters: beta=1.5, r=0.01, p=0.575, eps=-1.0
+critical values: bup_B=1.38333, bup_A=1.8625, bc_B=1.62304, bc_A=8.1017, rc_A=0.8625, rc_B=0.383333
+========================================================================
+
+b=1.19217 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.56+0i, +0.853+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.125+0i, -0.67+0i
+   E at (0.73636, 0.52340) |           saddle | eigs: -0.234+0i, +0.136+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.287+0i, -0.176+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.399+0i, +0.358+0i
+
+b=1.50319 | expected attractor set: A,B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.56+0i, +0.853+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.304+0i, -0.359+0i
+   E at (0.60953, 0.12620) |           saddle | eigs: -0.297+0i, +0.0667+0i
+  B' at (0.75698, 0.00000) |      stable node | eigs: -0.136+0i, -0.129+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.18+0i, -0.444+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +1.04+0i, +0.937+0i
+
+b=1.74277 | expected attractor set: A
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.56+0i, +0.853+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.442+0i, -0.12+0i
+  B' at (0.50948, 0.00000) |           saddle | eigs: -0.275+0i, +0.0867+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.539+0i, -0.651+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +1.54+0i, +1.38+0i
+
+b=4.9821 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.56+0i, +0.853+0i
+  A' at (0.00000, 0.21462) |      stable node | eigs: -0.0548+0i, -0.67+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -2.3+0i, +3.12+0i
+  B' at (0.09399, 0.00000) |           saddle | eigs: -0.507+0i, +0.449+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: -3.44+0i, +5.4+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +8.26+0i, +7.42+0i
+
+b=8.74984 | expected attractor set: E
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.56+0i, +0.853+0i
+  A' at (0.00000, 0.11014) |           saddle | eigs: -0.759+0i, +0.00585+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -4.47+0i, +6.89+0i
+   E at (0.00087, 0.10929) |      stable node | eigs: -0.00581+0i, -0.758+0i
+  B' at (0.04824, 0.00000) |           saddle | eigs: -0.533+0i, +0.488+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +11+0i, -6.69+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +16.1+0i, +14.4+0i
+
+Saved: ./scenario_(iii₂)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (iii₃)
+parameters: beta=1.25, r=0.386, p=0.8, eps=-1.0
+critical values: bup_B=1.64, bup_A=2, bc_B=2.3639, bc_A=-2.53342, rc_A=1, rc_B=0.64
+========================================================================
+
+b=1.3205 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict positive divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.317+0i, +0.614+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.739+0i, -0.679+0i
+   E at (0.48174, 0.33789) |           saddle | eigs: +0.297+0i, -0.262+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.706+0i, -0.399+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.657+0i, +0.641+0i
+
+b=1.82 | expected attractor set: A,B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.318+0i, +0.614+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -1.14+0i, -0.18+0i
+   E at (0.31319, 0.10137) |           saddle | eigs: -0.309+0i, +0.153+0i
+  B' at (0.58525, 0.00000) |      stable node | eigs: -0.132+0i, -0.451+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.225+0i, -1.21+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +1.68+0i, +1.64+0i
+
+b=2.18195 | expected attractor set: A',B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.318+0i, +0.614+0i
+  A' at (0.00000, 0.77141) |      stable node | eigs: -0.14+0i, -1.03+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: +0.182+0i, -1.43+0i
+   E at (0.27150, 0.02714) |           saddle | eigs: -0.275+0i, +0.0573+0i
+  B' at (0.31912, 0.00000) |      stable node | eigs: -0.216+0i, -0.0823+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.677+0i, -1.57+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +2.42+0i, +2.36+0i
+
+b=2.55301 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.318+0i, +0.614+0i
+  A' at (0.00000, 0.52613) |      stable node | eigs: -0.291+0i, -0.757+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -1.72+0i, +0.553+0i
+  B' at (0.21765, 0.00000) |           saddle | eigs: -0.248+0i, +0.0583+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +1.14+0i, -1.94+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +3.18+0i, +3.11+0i
+
+Saved: ./scenario_(iii₃)_phase_portraits.png
+
+========================================================================
+TABLE-I SCENARIO (iii₄)
+parameters: beta=1.0, r=0.0, p=0.3, eps=-0.4
+critical values: bup_B=1.12, bup_A=1.12, bc_B=1.17143, bc_A=1.17143, rc_A=0.12, rc_B=0.12
+========================================================================
+
+b=1.0605 | expected attractor set: A,B
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.12+0i, +0.12+0i
+   A at (0.00000, 1.00000) |      stable node | eigs: -0.0181+0i, -0.0595+0i
+   E at (0.60408, 0.60408) |           saddle | eigs: +0.0186+0i, -0.0475+0i
+   B at (1.00000, 0.00000) |      stable node | eigs: -0.0595+0i, -0.0181+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.0786+0i, +0.0786+0i
+
+b=1.12 | expected attractor set: A,B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.12+0i, +0.12+0i
+   A at (0.00000, 1.00000) |   non-hyperbolic | eigs: -0.036+0i, -7.95e-10+0i
+   E at (0.43478, 0.43478) |           saddle | eigs: +0.00885+0i, -0.0678+0i
+   B at (1.00000, 0.00000) |   non-hyperbolic | eigs: +1.2e-13+0i, -0.036+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.156+0i, +0.156+0i
+
+b=1.14571 | expected attractor set: A',B'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.12+0i, +0.12+0i
+  A' at (0.00000, 0.82353) |      stable node | eigs: -0.0212+0i, -0.0148+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.0437+0i, +0.0257+0i
+   E at (0.38781, 0.38781) |           saddle | eigs: +0.00427+0i, -0.0735+0i
+  B' at (0.82353, 0.00000) |      stable node | eigs: -0.0212+0i, -0.0148+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.0257+0i, -0.0437+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.189+0i, +0.189+0i
+
+b=1.17143 | expected attractor set: A'
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.12+0i, +0.12+0i
+  A' at (0.00000, 0.70000) |   non-hyperbolic | eigs: -0.036+0i, +1.71e-13+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: +0.0514+0i, -0.0514+0i
+   E at (0.01750, 0.68250) |   non-hyperbolic | eigs: +2.14e-13+0i, -0.0401+0i
+   E at (0.03333, 0.66667) |   non-hyperbolic | eigs: +2.57e-13+0i, -0.0436+0i
+   E at (0.08109, 0.61891) |   non-hyperbolic | eigs: +7.12e-13+0i, -0.0532+0i
+   E at (0.08205, 0.61795) |   non-hyperbolic | eigs: +2.21e-13+0i, -0.0534+0i
+   E at (0.08333, 0.61667) |   non-hyperbolic | eigs: -8.25e-13+0i, -0.0536+0i
+   E at (0.09145, 0.60855) |   non-hyperbolic | eigs: -1.49e-13+0i, -0.0551+0i
+   E at (0.09733, 0.60267) |   non-hyperbolic | eigs: -1.63e-13+0i, -0.0561+0i
+   E at (0.11667, 0.58333) |   non-hyperbolic | eigs: -7.07e-13+0i, -0.0593+0i
+   E at (0.12107, 0.57893) |   non-hyperbolic | eigs: +1.71e-13+0i, -0.06+0i
+   E at (0.13788, 0.56212) |   non-hyperbolic | eigs: +3.11e-13+0i, -0.0626+0i
+   E at (0.13835, 0.56165) |   non-hyperbolic | eigs: -3.86e-13+0i, -0.0626+0i
+   E at (0.16667, 0.53333) |   non-hyperbolic | eigs: +4.34e-13+0i, -0.0665+0i
+   E at (0.17514, 0.52486) |   non-hyperbolic | eigs: +9.65e-13+0i, -0.0675+0i
+   E at (0.18184, 0.51816) |   non-hyperbolic | eigs: +1.71e-13+0i, -0.0683+0i
+   E at (0.21911, 0.48089) |   non-hyperbolic | eigs: +1.71e-13+0i, -0.0721+0i
+   E at (0.25000, 0.45000) |   non-hyperbolic | eigs: +1.1e-12+0i, -0.0746+0i
+   E at (0.25434, 0.44566) |   non-hyperbolic | eigs: +9.16e-13+0i, -0.0749+0i
+   E at (0.25683, 0.44317) |   non-hyperbolic | eigs: +1.71e-13+0i, -0.075+0i
+   E at (0.28333, 0.41667) |   non-hyperbolic | eigs: +2.31e-11+0i, -0.0765+0i
+   E at (0.28993, 0.41007) |   non-hyperbolic | eigs: +1.72e-13+0i, -0.0768+0i
+   E at (0.29249, 0.40751) |   non-hyperbolic | eigs: -6.02e-13+0i, -0.0769+0i
+   E at (0.30686, 0.39314) |   non-hyperbolic | eigs: -9.99e-13+0i, -0.0774+0i
+   E at (0.31282, 0.38718) |   non-hyperbolic | eigs: +5.63e-13+0i, -0.0775+0i
+   E at (0.31761, 0.38239) |   non-hyperbolic | eigs: -2.21e-13+0i, -0.0776+0i
+   E at (0.32909, 0.37091) |   non-hyperbolic | eigs: +1.71e-13+0i, -0.0779+0i
+   E at (0.33333, 0.36667) |   non-hyperbolic | eigs: +3.68e-12+0i, -0.0779+0i
+   E at (0.33629, 0.36371) |   non-hyperbolic | eigs: +9.6e-13+0i, -0.0779+0i
+   E at (0.35000, 0.35000) |   non-hyperbolic | eigs: +9.61e-13+0i, -0.078+0i
+   E at (0.36371, 0.33629) |   non-hyperbolic | eigs: -0.0779+0i, -6.17e-13+0i
+   E at (0.36667, 0.33333) |   non-hyperbolic | eigs: -0.0779+0i, +4.08e-12+0i
+   E at (0.37091, 0.32909) |   non-hyperbolic | eigs: -0.0779+0i, +1.71e-13+0i
+   E at (0.38239, 0.31761) |   non-hyperbolic | eigs: -0.0776+0i, +1.71e-13+0i
+   E at (0.38718, 0.31282) |   non-hyperbolic | eigs: -0.0775+0i, +1.71e-13+0i
+   E at (0.39314, 0.30686) |   non-hyperbolic | eigs: -0.0774+0i, -2.19e-13+0i
+   E at (0.40751, 0.29249) |   non-hyperbolic | eigs: -0.0769+0i, -6.02e-13+0i
+   E at (0.41007, 0.28993) |   non-hyperbolic | eigs: -0.0768+0i, +1.72e-13+0i
+   E at (0.41667, 0.28333) |   non-hyperbolic | eigs: -0.0765+0i, +2.27e-11+0i
+   E at (0.44317, 0.25683) |   non-hyperbolic | eigs: -0.075+0i, -2.02e-13+0i
+   E at (0.44566, 0.25434) |   non-hyperbolic | eigs: -0.0749+0i, +5.44e-13+0i
+   E at (0.45000, 0.25000) |   non-hyperbolic | eigs: -0.0746+0i, +1.47e-12+0i
+   E at (0.48089, 0.21911) |   non-hyperbolic | eigs: -0.0721+0i, +1.71e-13+0i
+   E at (0.51816, 0.18184) |   non-hyperbolic | eigs: -0.0683+0i, +9.8e-13+0i
+   E at (0.52486, 0.17514) |   non-hyperbolic | eigs: -0.0675+0i, -9.39e-13+0i
+   E at (0.53333, 0.16667) |   non-hyperbolic | eigs: -0.0665+0i, -3.4e-13+0i
+   E at (0.56165, 0.13835) |   non-hyperbolic | eigs: -0.0626+0i, +1.01e-12+0i
+   E at (0.56212, 0.13788) |   non-hyperbolic | eigs: -0.0626+0i, +3.11e-13+0i
+   E at (0.57893, 0.12107) |   non-hyperbolic | eigs: -0.06+0i, -3.43e-13+0i
+   E at (0.58333, 0.11667) |   non-hyperbolic | eigs: -0.0593+0i, +1.71e-13+0i
+   E at (0.60267, 0.09733) |   non-hyperbolic | eigs: -0.0561+0i, -1.63e-13+0i
+   E at (0.60855, 0.09145) |   non-hyperbolic | eigs: -0.0551+0i, +2.78e-13+0i
+   E at (0.61667, 0.08333) |   non-hyperbolic | eigs: -0.0536+0i, -1.28e-12+0i
+   E at (0.61795, 0.08205) |   non-hyperbolic | eigs: -0.0534+0i, -5.22e-13+0i
+   E at (0.61891, 0.08109) |   non-hyperbolic | eigs: -0.0532+0i, +7.12e-13+0i
+   E at (0.66667, 0.03333) |   non-hyperbolic | eigs: -0.0436+0i, +2.57e-13+0i
+   E at (0.68250, 0.01750) |   non-hyperbolic | eigs: -0.0401+0i, +2.14e-13+0i
+  B' at (0.70000, 0.00000) |   non-hyperbolic | eigs: -0.036+0i, +1.71e-13+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.0514+0i, -0.0514+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.223+0i, +0.223+0i
+
+b=1.26514 | expected attractor set: E
+No LC: Bendixson-Dulac, strict negative divergence in the open square.
+   D at (0.00000, 0.00000) |    unstable node | eigs: +0.12+0i, +0.12+0i
+  A' at (0.00000, 0.45259) |           saddle | eigs: +0.0297+0i, -0.0657+0i
+   A at (0.00000, 1.00000) |           saddle | eigs: -0.0795+0i, +0.145+0i
+   E at (0.25824, 0.25824) |      stable node | eigs: -0.089+0i, -0.0126+0i
+  B' at (0.45259, 0.00000) |           saddle | eigs: -0.0657+0i, +0.0297+0i
+   B at (1.00000, 0.00000) |           saddle | eigs: +0.145+0i, -0.0795+0i
+   C at (1.00000, 1.00000) |    unstable node | eigs: +0.345+0i, +0.345+0i
