@@ -72,18 +72,4 @@
 #define FERMI_BETA 1.0
 #endif
 
-
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
