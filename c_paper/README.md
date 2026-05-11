@@ -12,9 +12,9 @@ El sistema está formado por dos poblaciones de tamaños $N_1$ y $N_2$.
 Cada individuo puede encontrarse en uno de dos estados, que identificamos con
 $0$ y $1$. Por tanto, el espacio de estados del sistema es
 
-$$
-\Gamma = {0,1}^{N_1+N_2}.
-$$
+```math
+\Gamma = \{0,1\}^{N_1+N_2}
+```
 
 La evolución temporal del sistema se describe mediante
 
