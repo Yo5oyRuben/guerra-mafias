@@ -1,7 +1,3 @@
-/* File: utils.h
- * Purpose: Utilidades numericas generales (estadistica basica, etc.).
- */
-
 #ifndef UTILS_H
 #define UTILS_H
 

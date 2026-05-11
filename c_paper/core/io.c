@@ -1,8 +1,8 @@
-/* File: io.c
- * Purpose: Implementa escritura/lectura de datos (por ejemplo CSV) de simulacion.
- */
 #include <stdio.h>
 #include "types.h"
+
+/*aqui implementamos funciones sencillas de entrada y salida que usamos durante procesos
+simulacion y debugging*/
 
 /*guardar un vector normal en un fichero*/
 void print_vector(double *v, int n, char *filename)

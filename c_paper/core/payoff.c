@@ -1,7 +1,4 @@
-﻿/* File: payoff.c
- * Purpose: Implementa el calculo de pagos segun estrategias y estructura de red.
- */
-#include <stdint.h>
+﻿#include <stdint.h>
 #include "graph.h"
 #include "types.h"
 
@@ -22,9 +19,13 @@ double Pi_i(int i, const uint8_t *gamma, params lambda, const Graph *g)
 {
     int k,j;
     double pi=0;
+    /*recorremos las aristas del nodo i*/
     for(k=g->row_ptr[i];k<g->row_ptr[i+1];k++)
     {
+        /*este es el indice del nodo adyacente*/
         j=g->col_idx[k];
+        /*miramos si pertenecen al mismo subgrafo, para decidir si incrementar
+        el pago con u_intra o u_inter*/
         if((i<N1&&j<N1)||(i>=N1&&j>=N1))
         {
             pi+=u_intra(gamma[i],gamma[j],lambda);
@@ -38,6 +39,8 @@ double Pi_i(int i, const uint8_t *gamma, params lambda, const Graph *g)
 }
 
 /*calcula la diferencia de pagos entre dos individuos i,j, sean de las poblaciones 1 o 2*/
+/*esta funcion al final no la usamos para nada porque es menos eficiente que guardar
+todos los pagos en un vector en cada paso temporal*/
 double delta_ij(int i, int j, const uint8_t *gamma, params lambda, const Graph *g)
 {
     return Pi_i(j,gamma,lambda,g)-Pi_i(i,gamma,lambda,g);

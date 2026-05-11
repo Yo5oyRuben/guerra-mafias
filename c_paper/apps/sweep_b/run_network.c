@@ -1,10 +1,9 @@
-/* File: run_network.c
- * Purpose: Punto de entrada ejecutable para correr el caso con red.
- */
-
 #include "../../head.h"
 #include "sweeps.h"
 
+/*este main hace un barrido sobre p12 y sobre b para recrear las figuras 3 y 4 del paper.
+esta version es más de prueba, para hacer graficas rápidas. la version potente
+se encuentra en el otro archivo*/
 int main(void)
 {
     int i;
@@ -14,6 +13,7 @@ int main(void)
     char filename[256];
     FILE *out;
 
+    /*metemos en el nombre del archivo informacion de la simulacion*/
     snprintf(
         filename,
         sizeof(filename),
@@ -32,7 +32,7 @@ int main(void)
     }
     fclose(out);
 
-
+    /*para cada valor de p12, hacemos el barrido sobre b y guardamos los resultados*/
     for(i=0;i<7;i++)
     {
         sweep_b(p12[i],c_med,c_sigma,b_values);

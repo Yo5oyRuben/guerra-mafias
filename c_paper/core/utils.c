@@ -1,11 +1,8 @@
-/* File: utils.c
- * Purpose: Implementa utilidades numericas generales.
- */
-
 #include <math.h>
 #include "utils.h"
 #include "types.h"
 
+/*calcula media y varianza de un array*/
 void medvar(const double *v, int n, double *med, double *sigma)
 {
     int i;
@@ -22,6 +19,7 @@ void medvar(const double *v, int n, double *med, double *sigma)
     *sigma = sqrt(var);
 }
 
+/*da las coordenadas de un punto en la rejilla en funcion de sus indices*/
 point2d grid_point(int ix, int iy, int ndiv)
 {
     point2d point;

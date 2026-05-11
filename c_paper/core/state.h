@@ -1,8 +1,4 @@
-﻿/* File: state.h
- * Purpose: Declara funciones para inicializar y actualizar el microestado (sigmas por nodo).
- */
-
-#ifndef STATE_H
+﻿#ifndef STATE_H
 #define STATE_H
 
 #include <stdint.h>

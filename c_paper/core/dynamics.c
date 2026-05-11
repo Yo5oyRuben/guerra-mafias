@@ -81,19 +81,27 @@ void time_step(const uint8_t *gamma_old,uint8_t *gamma_new, const Graph *g, para
     {
         if(g->k_intra[i]!=0)
         {
+            /*elegimos un vecino al azar de su subgrafo.
+            d es un entero que va de 0 a a (grado del nodo i)-1, con probabilidad plana*/
             d=rng_int(g->k_intra[i]);
+            /*ahora, j es el indice del vecino elegido*/
             j=g->col_idx[g->row_ptr[i]+d];
+            /*calculamos la diferencia de pagos y la cte de normalizacion*/
             D=payoff[j]-payoff[i];
             K=g->k_intra[j]*u.u_intra_max+g->k_inter[j]*u.u_inter_max-(g->k_intra[i]*u.u_intra_min+g->k_inter[i]*u.u_inter_min);
+            /*y ahora por ultimo llamamos a las funciones de probabilidad de copia.
+            de nuevo, solo compilamos lo que diga UPDATE_RULE*/
             #if UPDATE_RULE==2
             P=copy_prob_degree(D,K,(double)(g->k_intra[j]+g->k_inter[j]),(double)g->m/NTOT);
             #else
             P=copy_prob(D,K);
             #endif
 
+            /*aceptamos el cambio segun la probabilidad de copia*/
             if(P>fran()) gamma_new[i]=gamma_old[j];
             else gamma_new[i]=gamma_old[i];
         }
+        /*si el nodo no tiene vecinos dentro de su subgrafo, entonces no tiene a nadie a quien copiar*/
         else gamma_new[i]=gamma_old[i];
     }
 }
