@@ -13,13 +13,13 @@ Cada individuo puede encontrarse en uno de dos estados, que identificamos con
 $0$ y $1$. Por tanto, el espacio de estados del sistema es
 
 $$
-\Gamma = \left\{0,1\right\}^{N_1+N_2}.
+\Gamma = {0,1}^{N_1+N_2}.
 $$
 
 La evolución temporal del sistema se describe mediante
 
 $$
-\gamma:\mathbb{R}^+ \longrightarrow \Gamma\qquadt \longmapsto \gamma(t),
+\gamma:\mathbb{R}^+ \longrightarrow \Gamma\qquad t \longmapsto \gamma(t),
 $$
 
 donde $\gamma(t)$ representa la configuración microscópica del sistema en el
@@ -39,4 +39,4 @@ Las interacciones se dividen en dos tipos:
   Contiene distintos programas ejecutables (`main`) utilizados para realizar experimentos concretos y barridos de parámetros. Muchos de los parámetros de simulación pueden cambiarse desde el archivo de configuracion `config.h`.
 
 - `out/experiments`  
-  Contiene los resultados ordenados generados por las simulaciones.
+  Contiene los resultados ordenados generados por las simulaciones, nuestras explicaciones sobre la sucesión de experimentos que hemos hecho y alguna conclusión.
