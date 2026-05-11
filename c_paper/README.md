@@ -13,13 +13,14 @@ Cada individuo puede encontrarse en uno de dos estados, que identificamos con
 $0$ y $1$. Por tanto, el espacio de estados del sistema es
 
 $$
-\Gamma = \{0,1\}^{N_1+N_2}.
+\Gamma = \left\{0,1\right\}^{N_1+N_2}.
 $$
 
 La evolución temporal del sistema se describe mediante
 
-```math
+$$
 \gamma:\mathbb{R}^+ \longrightarrow \Gamma\qquadt \longmapsto \gamma(t),
+$$
 
 donde $\gamma(t)$ representa la configuración microscópica del sistema en el
 instante $t$. Los observables son la fracción de cooperadores en cada población. El programa simula la evolución temporal del sistema a partir de una configuración inicial dada y permite estudiar tanto los regímenes transitorios como el comportamiento asintótico de la dinámica. Los grafos que consideramos son no dirigidos, de tipo Erdős-Rényi.
