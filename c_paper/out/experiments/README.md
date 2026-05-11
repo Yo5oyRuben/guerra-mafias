@@ -1,4 +1,4 @@
-# Experimentos y flujo de trabajo
+# Experimentos
 
 Esta carpeta contiene los experimentos principales que hemos ido realizando durante el proyecto. Aquí explicaremos el recorrido que seguimos, es decir, cómo fuimos tomando decisiones a partir de los resultados que iban saliendo.
 
@@ -33,7 +33,7 @@ Aun así, intentamos estudiar parcialmente cómo cambia la hipersuperficie crít
 
 Esta parte no la hemos llegado a cerrar. Solo mostramos que la transición existe, que parece bastante brusca y que depende de los parámetros del sistema.
 
-## 04_update_rules
+## 04_copy_probability
 
 Después volvimos al problema inicial: por qué nuestra figura 4 no coincidía con la del paper.
 
@@ -51,8 +51,7 @@ Probamos tres reglas de actualización:
    Esta regla da más importancia a los nodos de mayor grado. Además, nos permite hacernos una idea de qué habría pasado si en la probabilidad lineal hubiéramos usado una normalización menos agresiva.
 
 Estudiamos el límite termodinámico para las tres reglas y vimos que las ecuaciones analíticas parecen cumplirse en todos los casos.
-
-Hay que tener cuidado, eso sí, con la regla lineal dependiente del grado: esta comprobación la hemos hecho usando redes de Erdős-Rényi, y no sabemos si el resultado seguiría siendo cierto para otras topologías.
+Hay que tener cuidado con la regla lineal dependiente del grado, pues esta comprobación la hemos hecho usando redes de Erdős-Rényi, y no sabemos si el resultado seguiría siendo cierto para otras topologías.
 
 Después regeneramos las figuras del paper usando estas distintas reglas. Los resultados cambian bastante: algunas reglas mueven la curva en una dirección más parecida a la del paper, mientras que otras la alejan.
 
