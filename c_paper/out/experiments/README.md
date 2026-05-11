@@ -1,118 +1,61 @@
-# Experiment Organization
+# Experimentos y flujo de trabajo
 
-This index organizes existing experiment folders by scientific purpose without moving any experiment data.
+Esta carpeta contiene los experimentos principales que hemos ido realizando durante el proyecto. Aquí explicaremos el recorrido que seguimos, es decir, cómo fuimos tomando decisiones a partir de los resultados que iban saliendo.
 
-Important: folders marked `active_do_not_move` are linked to work currently running or recently interrupted and should stay in place until the current simulations are fully curated.
+## 01_paper_baselines
 
-Primary table: `experiment_catalog.tsv`.
+Lo primero que hicimos fue intentar reproducir las figuras del paper original.
 
-## Categories
+La figura 3 nos sale prácticamente clavada, lo cual fue una primera buena señal de que el código estaba funcionando correctamente.
+Sin embargo, con la figura 4 no obtuvimos el mismo resultado. En nuestras simulaciones, la cooperación cae mucho más deprisa que en la figura del paper. Este desacuerdo nos hizo preguntarnos si realmente nuestra implementación era correcta o si había algún detalle microscópico de la simulación no especificado en el artículo que se nos estuviera escapando.
 
-### active_or_incomplete
+## 02_thermodynamic_limit_high_connectivity
 
-Runs launched recently, aborted controllers, or outputs that should not be moved while work is still active.
+Para comprobar si el problema estaba en nuestro código, estudiamos el límite termodinámico y el régimen de altas conectividades.
 
-- `degree_linear_overnight_fig3_thermo_2026-05-11_real`; path=`degree_linear_overnight_fig3_thermo_2026-05-11_real`; status=active_do_not_move; raw=0; plots=2
-  Purpose: current degree-linear thermodynamic-limit work; keep in place
+La idea era la siguiente. Aunque una simulación microscópica pueda diferir de las ecuaciones analíticas en redes finitas o poco conectadas, en el límite de poblaciones grandes y conectividad alta debería acercarse a lo predicho por las ecuaciones de campo medio.
+Al hacer este estudio vimos que el sistema sí tiende a las predicciones analíticas en ese límite.
 
-### critical_relaxation
+Además, durante este proceso encontramos una transición bastante interesante entre dos regímenes:
 
-Long T_MAX experiments focused on relaxation time and critical slowing down.
+- un régimen donde las ecuaciones analíticas no describen prácticamente nada bien la simulación microscópica;
+- otro régimen donde las predicciones analíticas empiezan a cumplirse con mucha precisión.
 
-- `2026-05-06_relaxation_p073_TMAX200k`; path=`03_critical_transition/relaxation_time/p073_single/2026-05-06_relaxation_p073_TMAX200k`; status=archived_or_completed; raw=2; plots=2; notes=yes; manifest=yes
-  Purpose: critical relaxation-time and T_MAX sensitivity maps
-- `2026-05-06_relaxation_p073_TMAX400k`; path=`03_critical_transition/relaxation_time/p073_single/2026-05-06_relaxation_p073_TMAX400k`; status=archived_or_completed; raw=2; plots=2; notes=yes; manifest=yes
-  Purpose: critical relaxation-time and T_MAX sensitivity maps
-- `2026-05-06_relaxation_critical_TMAX400k_p_fine`; path=`03_critical_transition/relaxation_time/p_fine/2026-05-06_relaxation_critical_TMAX400k_p_fine`; status=archived_or_completed; raw=7; plots=7; notes=yes; manifest=yes
-  Purpose: critical relaxation-time and T_MAX sensitivity maps
-- `2026-05-07_relaxation_critical_p_narrow_TMAX400k`; path=`03_critical_transition/relaxation_time/p_fine/2026-05-07_relaxation_critical_p_narrow_TMAX400k`; status=archived_or_completed; raw=5; plots=5; notes=yes; manifest=yes
-  Purpose: critical relaxation-time and T_MAX sensitivity maps
-- `statistics`; path=`03_critical_transition/relaxation_time/statistics`; status=archived_or_completed; raw=2; plots=2; notes=yes; manifest=yes
-  Purpose: relaxation-time statistics near the critical region
-- `tmax_ladder`; path=`03_critical_transition/relaxation_time/tmax_ladder`; status=archived_or_completed; raw=9; plots=9; notes=yes; manifest=yes
-  Purpose: T_MAX ladder for critical slowing-down diagnostics
+Lo llamativo es que el cambio entre ambos regímenes no parece gradual, sino bastante repentino: la calidad de las predicciones mejora de golpe al cruzar cierta zona del espacio de parámetros.
 
-### degree_linear_sweep_b
+También observamos un critical slowing down muy marcado cerca de esta transición. Es decir, justo en la zona donde el sistema cambia de régimen, las simulaciones tardan muchísimo más en relajarse y alcanzar un comportamiento estacionario.
 
-Sweep_b experiments using the degree-weighted linear copy probability.
+## 03_critical_transition
 
-- `degree_linear`; path=`04_copy_probability/degree_linear`; status=archived_or_completed; raw=12; plots=9; notes=yes; manifest=yes
-  Purpose: degree-weighted linear probability sweep_b
-- `fig3_degree_alpha1`; path=`degree_linear_overnight_fig3_thermo_2026-05-11_real/fig3_degree_alpha1`; status=active_do_not_move; raw=7; plots=0; manifest=yes
-  Purpose: interrupted degree-linear Fig. 3 sweep attempt
+El critical slowing down hizo que no pudiéramos caracterizar esta transición con tanta profundidad como nos habría gustado, porque muchas simulaciones tardaban días, y no disponíamos de suficiente potencia de cálculo.
 
-### fermi_sweep_b
+Aun así, intentamos estudiar parcialmente cómo cambia la hipersuperficie crítica al variar los parámetros del sistema. Es decir, exploramos cómo se desplaza la frontera entre el régimen donde las ecuaciones analíticas fallan y el régimen donde sí describen correctamente la dinámica microscópica.
 
-Sweep_b experiments comparing Fermi copy probability across beta and p12.
+Esta parte no la hemos llegado a cerrar. Solo mostramos que la transición existe, que parece bastante brusca y que depende de los parámetros del sistema.
 
-- `derived_comparisons`; path=`04_copy_probability/fermi/derived_comparisons`; status=archived_or_completed; raw=0; plots=7
-  Purpose: derived Fermi comparison plots
-- `sweep_b_fig3`; path=`04_copy_probability/fermi/sweep_b_fig3`; status=archived_or_completed; raw=5; plots=0; manifest=yes
-  Purpose: Fermi copy probability Fig. 3 sweep_b
-- `sweep_b_fig4_fermi_beta_10_full_2026-05-07`; path=`04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_10_full_2026-05-07`; status=archived_or_completed; raw=8; plots=3; manifest=yes
-  Purpose: Fermi copy probability sweep_b comparison
-- `sweep_b_fig4_fermi_beta_1_full_2026-05-07`; path=`04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_1_full_2026-05-07`; status=archived_or_completed; raw=8; plots=3; manifest=yes
-  Purpose: Fermi copy probability sweep_b comparison
-- `sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2`; path=`04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2`; status=archived_or_completed; raw=8; plots=3; manifest=yes
-  Purpose: Fermi copy probability sweep_b comparison
+## 04_update_rules
 
-### frontier_scans_torre
+Después volvimos al problema inicial: por qué nuestra figura 4 no coincidía con la del paper.
 
-Grid/refinement experiments from the tower machine around the transition frontier.
+La hipótesis principal que estudiamos fue que, aunque varias reglas microscópicas de copia puedan ser equivalentes en el límite termodinámico y de alta conectividad, pueden producir dinámicas diferentes fuera de ese régimen.
 
-- `b_scan`; path=`03_critical_transition/frontier_scans_torre/b_scan`; status=archived_or_completed; raw=13; plots=5; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `boundary_robustness`; path=`03_critical_transition/frontier_scans_torre/boundary_robustness`; status=archived_or_completed; raw=13; plots=5; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `followup`; path=`03_critical_transition/frontier_scans_torre/followup`; status=archived_or_completed; raw=19; plots=7; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `high_p11_frontier`; path=`03_critical_transition/frontier_scans_torre/high_p11_frontier`; status=archived_or_completed; raw=37; plots=13; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `p11_p12_grid`; path=`03_critical_transition/frontier_scans_torre/p11_p12_grid`; status=archived_or_completed; raw=46; plots=16; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `p11_p12_refine`; path=`03_critical_transition/frontier_scans_torre/p11_p12_refine`; status=archived_or_completed; raw=37; plots=13; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
-- `p12_scan`; path=`03_critical_transition/frontier_scans_torre/p12_scan`; status=archived_or_completed; raw=19; plots=7; notes=yes; manifest=yes
-  Purpose: transition-frontier scan around the critical region
+Esto es importante porque el paper no da muchos detalles sobre cómo implementaron exactamente la simulación microscópica. Por tanto, pequeñas diferencias en la probabilidad de copia podrían cambiar bastante el resultado en redes finitas.
 
-### paper_baseline_sweep_b
+Probamos tres reglas de actualización:
 
-Baseline sweep_b reproductions of paper-style figures with the original linear update.
+1. Una probabilidad de copia lineal con una normalización absoluta y bastante agresiva. Esta es la que hemos usado para todos los experimentos anteriores, ya que es la más eficiente para el ordenador.
 
-- `01_paper_baselines`; path=`01_paper_baselines`; status=archived_or_completed; raw=20; plots=9; manifest=yes
-  Purpose: paper Fig. 3/Fig. 4 baseline plus stronger-coupling Fig. 4
+2. Una probabilidad de copia de Fermi. Esta es lentísima y requiere mucho tiempo de cálculo. Sin embargo, es muy diferente a la anterior, pues permite cambios de estrategia a estrategias peores.
 
-### thermodynamic_limit_high_connectivity
+3. Una probabilidad lineal dependiente del grado del nodo.  
+   Esta regla da más importancia a los nodos de mayor grado. Además, nos permite hacernos una idea de qué habría pasado si en la probabilidad lineal hubiéramos usado una normalización menos agresiva.
 
-Initial-plane checks of analytic fixed points in large-N / high-connectivity regimes.
+Estudiamos el límite termodinámico para las tres reglas y vimos que las ecuaciones analíticas parecen cumplirse en todos los casos.
 
-- `critical_asymmetry`; path=`02_thermodynamic_limit_high_connectivity/asymmetry/critical_asymmetry`; status=archived_or_completed; raw=3; plots=3; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `highN_asymmetry`; path=`02_thermodynamic_limit_high_connectivity/asymmetry/highN_asymmetry`; status=archived_or_completed; raw=13; plots=13; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `lowN_asymmetry`; path=`02_thermodynamic_limit_high_connectivity/asymmetry/lowN_asymmetry`; status=archived_or_completed; raw=13; plots=13; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `connectivity_threshold`; path=`02_thermodynamic_limit_high_connectivity/connectivity_threshold`; status=archived_or_completed; raw=21; plots=18; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `fermi`; path=`02_thermodynamic_limit_high_connectivity/fermi`; status=archived_or_completed; raw=5; plots=5; notes=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `n_scaling_critical`; path=`02_thermodynamic_limit_high_connectivity/finite_size_scaling/n_scaling_critical`; status=archived_or_completed; raw=4; plots=4; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
-- `symmetric_N_scaling`; path=`02_thermodynamic_limit_high_connectivity/finite_size_scaling/symmetric_N_scaling`; status=archived_or_completed; raw=13; plots=13; notes=yes; manifest=yes
-  Purpose: large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+Hay que tener cuidado, eso sí, con la regla lineal dependiente del grado: esta comprobación la hemos hecho usando redes de Erdős-Rényi, y no sabemos si el resultado seguiría siendo cierto para otras topologías.
 
-## Proposed Physical Layout
+Después regeneramos las figuras del paper usando estas distintas reglas. Los resultados cambian bastante: algunas reglas mueven la curva en una dirección más parecida a la del paper, mientras que otras la alejan.
 
-For now this is only a proposal. Moving folders can be done later once active runs finish.
+En general, vimos que cuanto mayor es la probabilidad asignada a que un nodo cambie su bit cuando el nodo observado tiene mejor payoff, más parecida sale la curva a la figura del paper.
 
-- `00_active_or_incomplete/`: active controllers, interrupted runs, launch artefacts worth keeping temporarily.
-- `01_paper_baselines/`: original linear-probability paper reproductions.
-- `01_paper_baselines/`: original linear-probability sweep_b reproductions.
-- `02_thermodynamic_limit_high_connectivity/`: thermodynamic-limit, high-connectivity, N-scaling, and asymmetry checks.
-- `03_critical_transition/`: T_MAX, critical slowing down, and frontier scans.
-- `04_copy_probability/`: Fermi and degree-weighted linear update-rule comparisons.
-- `99_scratch_smoke/`: smoke tests and temporary launch checks.
-
-## Plotting Notes
-
-Most initial-plane `.txt` files include final states, sigmas, and `t_relax`; plots should expose both final attractor and relaxation time. Sweep-b `.tsv` files include mean and SEM for `x1`, `x2`, and global cooperation, so regenerated figures can show uncertainty bands and compare rules directly.
+Nuestra conclusión es que el desacuerdo con la figura 4 no implica necesariamente que nuestro código esté mal. Como el paper no especifica todos los detalles microscópicos de la simulación, nuestros resultados no son incompatibles con los suyos. Probablemente varias implementaciones microscópicas sean igualmente válidas, especialmente fuera del límite termodinámico, donde esas diferencias sí pueden tener efectos visibles.

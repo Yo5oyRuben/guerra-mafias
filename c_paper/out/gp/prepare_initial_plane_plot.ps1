@@ -3,9 +3,12 @@ param(
   [string]$Infile = '',
   [Parameter(Mandatory=$true)][string]$Points,
   [string]$InitialAvg = '',
+  [string]$Nullcline1 = '',
+  [string]$Nullcline2 = '',
   [Parameter(Mandatory=$true)][string]$Fixed,
   [string]$FixedStable = '',
   [string]$Params = '',
+  [string]$TmaxLabel = '',
   [Parameter(Mandatory=$true)][string]$PlotDir
 )
 
@@ -39,7 +42,9 @@ function Write-ParamLabels([string]$Tag, [string[]]$HeaderLines, [string]$ParamP
   $n2 = Get-TagValue $Tag 'N2'
   $p11 = Get-TagValue $Tag 'P11'
   $p22 = Get-TagValue $Tag 'P22'
-  $tmax = Get-TagValue $Tag 'TMAX'
+  $tmax = Get-HeaderValue $HeaderLines 'T_MAX'
+  if ($tmax -eq '') { $tmax = Get-TagValue $Tag 'TMAX' }
+  if ($tmax -eq '') { $tmax = $TmaxLabel }
   $b = Get-HeaderValue $HeaderLines 'b'
   $r = Get-HeaderValue $HeaderLines 'r'
   $e = Get-HeaderValue $HeaderLines 'e'
@@ -54,7 +59,7 @@ function Write-ParamLabels([string]$Tag, [string[]]$HeaderLines, [string]$ParamP
 
   $line1 = "N1=$n1, N2=$n2, b=$b, r=$r, e=$e"
   if ($tmax -ne '') {
-    $line2 = "P11=$p11, P12=$p12, P22=$p22, T_MAX=$tmax, ndiv=$ndiv, reps=$nreps"
+    $line2 = "P11=$p11, P12=$p12, P22=$p22, T_{MAX}=$tmax, ndiv=$ndiv, reps=$nreps"
   } else {
     $line2 = "P11=$p11, P12=$p12, P22=$p22, ndiv=$ndiv, reps=$nreps"
   }
@@ -145,6 +150,74 @@ function Write-FixedPointStability {
     Set-Content -Encoding ASCII -LiteralPath $StablePath
 }
 
+function Write-Nullclines {
+  param(
+    [string]$Nullcline1Path,
+    [string]$Nullcline2Path,
+    [string]$Tag,
+    [string[]]$HeaderLines
+  )
+
+  if ($Nullcline1Path -eq '' -and $Nullcline2Path -eq '') { return }
+
+  $bText = Get-ParameterValue $Tag $HeaderLines 'b' 'B'
+  $rText = Get-ParameterValue $Tag $HeaderLines 'r' 'R'
+  $eText = Get-ParameterValue $Tag $HeaderLines 'e' 'E'
+  $pText = Get-ParameterValue $Tag $HeaderLines 'p12' 'P12'
+  $n1Text = Get-ParameterValue $Tag $HeaderLines 'N1' 'N1'
+  $n2Text = Get-ParameterValue $Tag $HeaderLines 'N2' 'N2'
+
+  if ($bText -eq '' -or $rText -eq '' -or $eText -eq '' -or $pText -eq '' -or
+      $n1Text -eq '' -or $n2Text -eq '') {
+    if ($Nullcline1Path -ne '') { '' | Set-Content -Encoding ASCII -LiteralPath $Nullcline1Path }
+    if ($Nullcline2Path -ne '') { '' | Set-Content -Encoding ASCII -LiteralPath $Nullcline2Path }
+    return
+  }
+
+  $b = Parse-DoubleInvariant $bText
+  $r = Parse-DoubleInvariant $rText
+  $eps = Parse-DoubleInvariant $eText
+  $p = Parse-DoubleInvariant $pText
+  $beta = (Parse-DoubleInvariant $n1Text) / (Parse-DoubleInvariant $n2Text)
+
+  $a = 1.0 - $b + $r
+  $c = 1.0 - $b + $eps
+  $tol = 1e-12
+  $n = 400
+
+  if ($Nullcline1Path -ne '') {
+    $rows = New-Object System.Collections.Generic.List[string]
+    if ([Math]::Abs($p * $c) -gt $tol) {
+      for ($i = 0; $i -le $n; $i++) {
+        $x1 = [double]$i / [double]$n
+        $x2 = ($beta * $r + $p * $eps - $beta * $a * $x1) / ($p * $c)
+        if ($x2 -ge 0.0 -and $x2 -le 1.0) {
+          $rows.Add([string]::Format($InvariantCulture, "{0:F12} {1:F12}", $x1, $x2))
+        } elseif ($rows.Count -gt 0 -and $rows[$rows.Count - 1] -ne '') {
+          $rows.Add('')
+        }
+      }
+    }
+    $rows | Set-Content -Encoding ASCII -LiteralPath $Nullcline1Path
+  }
+
+  if ($Nullcline2Path -ne '') {
+    $rows = New-Object System.Collections.Generic.List[string]
+    if ([Math]::Abs($a) -gt $tol) {
+      for ($i = 0; $i -le $n; $i++) {
+        $x1 = [double]$i / [double]$n
+        $x2 = ($r + $beta * $p * $eps - $beta * $p * $c * $x1) / $a
+        if ($x2 -ge 0.0 -and $x2 -le 1.0) {
+          $rows.Add([string]::Format($InvariantCulture, "{0:F12} {1:F12}", $x1, $x2))
+        } elseif ($rows.Count -gt 0 -and $rows[$rows.Count - 1] -ne '') {
+          $rows.Add('')
+        }
+      }
+    }
+    $rows | Set-Content -Encoding ASCII -LiteralPath $Nullcline2Path
+  }
+}
+
 if ($Infile -ne '') {
   if (!(Test-Path -LiteralPath $Infile)) {
     Write-Error "Input file not found: $Infile"
@@ -210,17 +283,32 @@ if ($InitialAvg -ne '') {
           x1 = [double]::Parse($cols[2], $InvariantCulture)
           x2 = [double]::Parse($cols[3], $InvariantCulture)
           sum = 0.0
+          dxsum = 0.0
+          dysum = 0.0
           count = 0
         }
       }
+      $x1Final = [double]::Parse($cols[5], $InvariantCulture)
+      $x2Final = [double]::Parse($cols[6], $InvariantCulture)
       $acc[$key].sum += [double]::Parse($cols[9], $InvariantCulture)
+      $acc[$key].dxsum += $x1Final - $acc[$key].x1
+      $acc[$key].dysum += $x2Final - $acc[$key].x2
       $acc[$key].count += 1
     }
 
   $acc.Values |
     Sort-Object ix,iy |
     ForEach-Object {
-      [string]::Format($InvariantCulture, "{0:F12} {1:F12} {2:F12} {3}", $_.x1, $_.x2, ($_.sum / $_.count), $_.count)
+      [string]::Format(
+        $InvariantCulture,
+        "{0:F12} {1:F12} {2:F12} {3:F12} {4:F12} {5}",
+        $_.x1,
+        $_.x2,
+        ($_.sum / $_.count),
+        ($_.dxsum / $_.count),
+        ($_.dysum / $_.count),
+        $_.count
+      )
     } |
     Set-Content -Encoding ASCII -LiteralPath $InitialAvg
 }
@@ -232,4 +320,5 @@ if ($InitialAvg -ne '') {
   Set-Content -Encoding ASCII -LiteralPath $Fixed
 
 Write-FixedPointStability $Fixed $FixedStable $tag $headerLines
+Write-Nullclines $Nullcline1 $Nullcline2 $tag $headerLines
 Write-ParamLabels $tag $headerLines $Params

@@ -1,3 +1,5 @@
+/*este es el archivo de configuración. aquí, se pueden modificar los parámetros del modelo*/
+
 #ifndef CONFIG_H
 #define CONFIG_H
 
