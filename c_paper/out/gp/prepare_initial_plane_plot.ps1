@@ -2,12 +2,15 @@ param(
   [string]$Indir = '',
   [string]$Infile = '',
   [Parameter(Mandatory=$true)][string]$Points,
+  [string]$InitialAvg = '',
   [Parameter(Mandatory=$true)][string]$Fixed,
+  [string]$FixedStable = '',
   [string]$Params = '',
   [Parameter(Mandatory=$true)][string]$PlotDir
 )
 
 New-Item -ItemType Directory -Force -Path $PlotDir | Out-Null
+$InvariantCulture = [System.Globalization.CultureInfo]::InvariantCulture
 
 function Get-HeaderValue([string[]]$Lines, [string]$Name) {
   $line = $Lines | Where-Object { $_ -match "^\s*#\s+$Name\s+" } | Select-Object -First 1
@@ -23,6 +26,10 @@ function Get-TagValue([string]$Tag, [string]$Name) {
 
 function Escape-GnuplotLabel([string]$Text) {
   return (($Text -replace '\\','/') -replace '"','\"')
+}
+
+function Parse-DoubleInvariant([string]$Text) {
+  return [double]::Parse($Text, $InvariantCulture)
 }
 
 function Write-ParamLabels([string]$Tag, [string[]]$HeaderLines, [string]$ParamPath) {
@@ -56,6 +63,86 @@ function Write-ParamLabels([string]$Tag, [string[]]$HeaderLines, [string]$ParamP
     'unset title'
     ('set title "' + (Escape-GnuplotLabel $line1) + '\n' + (Escape-GnuplotLabel $line2) + '" font "Times New Roman,16" tc rgb "#222222"')
   ) | Set-Content -Encoding ASCII -LiteralPath $ParamPath
+}
+
+function Get-ParameterValue {
+  param([string]$Tag, [string[]]$HeaderLines, [string]$HeaderName, [string]$TagName)
+  $value = Get-HeaderValue $HeaderLines $HeaderName
+  if ($value -eq '') { $value = Get-TagValue $Tag $TagName }
+  return $value
+}
+
+function Get-JacobianClass {
+  param(
+    [double]$X1,
+    [double]$X2,
+    [double]$B,
+    [double]$Beta,
+    [double]$R,
+    [double]$P,
+    [double]$Eps
+  )
+
+  $A = 1.0 - $B + $R
+  $C = 1.0 - $B + $Eps
+  $g1 = $Beta * ($X1 * $A - $R) + $P * ($X2 * $C - $Eps)
+  $g2 = ($X2 * $A - $R) + $Beta * $P * ($X1 * $C - $Eps)
+
+  $j11 = (1.0 - 2.0 * $X1) * $g1 + $X1 * (1.0 - $X1) * $Beta * $A
+  $j12 = $X1 * (1.0 - $X1) * $P * $C
+  $j21 = $X2 * (1.0 - $X2) * $Beta * $P * $C
+  $j22 = (1.0 - 2.0 * $X2) * $g2 + $X2 * (1.0 - $X2) * $A
+
+  $trace = $j11 + $j22
+  $det = $j11 * $j22 - $j12 * $j21
+  $tol = 1e-9
+
+  if ($det -lt -$tol) { return 'saddle' }
+  if ($det -gt $tol -and $trace -lt -$tol) { return 'stable' }
+  if ($det -gt $tol -and $trace -gt $tol) { return 'unstable' }
+  return 'marginal'
+}
+
+function Write-FixedPointStability {
+  param(
+    [string]$FixedPath,
+    [string]$StablePath,
+    [string]$Tag,
+    [string[]]$HeaderLines
+  )
+
+  if ($StablePath -eq '') { return }
+
+  $bText = Get-ParameterValue $Tag $HeaderLines 'b' 'B'
+  $rText = Get-ParameterValue $Tag $HeaderLines 'r' 'R'
+  $eText = Get-ParameterValue $Tag $HeaderLines 'e' 'E'
+  $pText = Get-ParameterValue $Tag $HeaderLines 'p12' 'P12'
+  $n1Text = Get-ParameterValue $Tag $HeaderLines 'N1' 'N1'
+  $n2Text = Get-ParameterValue $Tag $HeaderLines 'N2' 'N2'
+
+  if ($bText -eq '' -or $rText -eq '' -or $eText -eq '' -or $pText -eq '' -or
+      $n1Text -eq '' -or $n2Text -eq '') {
+    Copy-Item -LiteralPath $FixedPath -Destination $StablePath -Force
+    return
+  }
+
+  $b = Parse-DoubleInvariant $bText
+  $r = Parse-DoubleInvariant $rText
+  $eps = Parse-DoubleInvariant $eText
+  $p = Parse-DoubleInvariant $pText
+  $beta = (Parse-DoubleInvariant $n1Text) / (Parse-DoubleInvariant $n2Text)
+
+  Get-Content -LiteralPath $FixedPath |
+    ForEach-Object {
+      $cols = $_ -split "\s+"
+      if ($cols.Count -lt 3) { return }
+      $label = $cols[0]
+      $x1 = Parse-DoubleInvariant $cols[1]
+      $x2 = Parse-DoubleInvariant $cols[2]
+      $class = Get-JacobianClass $x1 $x2 $b $beta $r $p $eps
+      [string]::Format($InvariantCulture, "{0} {1:F12} {2:F12} {3}", $label, $x1, $x2, $class)
+    } |
+    Set-Content -Encoding ASCII -LiteralPath $StablePath
 }
 
 if ($Infile -ne '') {
@@ -107,10 +194,42 @@ if (-not $header) {
   exit 1
 }
 
+if ($InitialAvg -ne '') {
+  $acc = @{}
+  Get-Content -LiteralPath $Points |
+    Where-Object { $_ -and $_[0] -ne '#' } |
+    ForEach-Object {
+      $cols = $_ -split "\s+"
+      if ($cols.Count -lt 10) { return }
+
+      $key = "$($cols[0]) $($cols[1])"
+      if (-not $acc.ContainsKey($key)) {
+        $acc[$key] = [ordered]@{
+          ix = [int]$cols[0]
+          iy = [int]$cols[1]
+          x1 = [double]::Parse($cols[2], $InvariantCulture)
+          x2 = [double]::Parse($cols[3], $InvariantCulture)
+          sum = 0.0
+          count = 0
+        }
+      }
+      $acc[$key].sum += [double]::Parse($cols[9], $InvariantCulture)
+      $acc[$key].count += 1
+    }
+
+  $acc.Values |
+    Sort-Object ix,iy |
+    ForEach-Object {
+      [string]::Format($InvariantCulture, "{0:F12} {1:F12} {2:F12} {3}", $_.x1, $_.x2, ($_.sum / $_.count), $_.count)
+    } |
+    Set-Content -Encoding ASCII -LiteralPath $InitialAvg
+}
+
 [regex]::Matches($header, "(A'|B'|[ABCDE]):?=?\(([-0-9.]+),([-0-9.]+)\)") |
   ForEach-Object {
     "{0} {1} {2}" -f $_.Groups[1].Value,$_.Groups[2].Value,$_.Groups[3].Value
   } |
   Set-Content -Encoding ASCII -LiteralPath $Fixed
 
+Write-FixedPointStability $Fixed $FixedStable $tag $headerLines
 Write-ParamLabels $tag $headerLines $Params

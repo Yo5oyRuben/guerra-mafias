@@ -86,7 +86,19 @@ FILE *open_initial_plane_file(const char *filename, params lambda, double p12,
     fprintf(out,"# b %.12g\n", lambda.b);
     fprintf(out,"# r %.12g\n", lambda.r);
     fprintf(out,"# e %.12g\n", lambda.e);
+    fprintf(out,"# N1 %d\n", N1);
+    fprintf(out,"# N2 %d\n", N2);
+    fprintf(out,"# P11 %.12g\n", (double)P11);
     fprintf(out,"# p12 %.12g\n", p12);
+    fprintf(out,"# P22 %.12g\n", (double)P22);
+    fprintf(out,"# T_MCS %d\n", T_MCS);
+    fprintf(out,"# T_MAX %d\n", T_MAX);
+    fprintf(out,"# W %d\n", W);
+    fprintf(out,"# UPDATE_RULE %d\n", UPDATE_RULE);
+    fprintf(out,"# FERMI_BETA %.12g\n", (double)FERMI_BETA);
+    fprintf(out,"# DEGREE_ALPHA %.12g\n", (double)DEGREE_ALPHA);
+    fprintf(out,"# DEGREE_FACTOR_MIN %.12g\n", (double)DEGREE_FACTOR_MIN);
+    fprintf(out,"# DEGREE_FACTOR_MAX %.12g\n", (double)DEGREE_FACTOR_MAX);
     fprintf(out,"# ndiv %d\n", ndiv);
     fprintf(out,"# n_reps %d\n", n_reps);
     fprintf(out, "# A:(0,1),\tA':(0,%.3f),\tB:(1,0),\tB'=(%.3f,0),\tC:(1,1),\tD:(0,0),\tE:(%.3f,%.3f) \n",

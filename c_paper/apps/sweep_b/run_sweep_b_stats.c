@@ -86,6 +86,9 @@ int main(int argc, char **argv)
     fprintf(out, "# E %.12g\n", (double)E);
     fprintf(out, "# UPDATE_RULE %d\n", UPDATE_RULE);
     fprintf(out, "# FERMI_BETA %.12g\n", (double)FERMI_BETA);
+    fprintf(out, "# DEGREE_ALPHA %.12g\n", (double)DEGREE_ALPHA);
+    fprintf(out, "# DEGREE_FACTOR_MIN %.12g\n", (double)DEGREE_FACTOR_MIN);
+    fprintf(out, "# DEGREE_FACTOR_MAX %.12g\n", (double)DEGREE_FACTOR_MAX);
     fprintf(out, "# x01 %.12g\n", x01);
     fprintf(out, "# x02 %.12g\n", x02);
     fprintf(out, "# reps %d\n", reps);

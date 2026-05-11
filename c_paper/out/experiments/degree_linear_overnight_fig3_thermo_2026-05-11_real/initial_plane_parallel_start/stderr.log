@@ -1,0 +1,8 @@
+gnuplot.exe : 
+En C:\Users\rbndz\Movistar 
+Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_initial_plane_queue.ps1: 533 Car cter: 9
++         & gnuplot -e "infile='$output'; outfile='$plot'" c_paper/out/ ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

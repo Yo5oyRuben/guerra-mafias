@@ -63,7 +63,8 @@
 #define SAVE_SERIES 0
 #endif
 
-/*usar probabilidad de copia lineal o fermi. 1 es de fermi. 0 es lineal*/
+/*usar probabilidad de copia lineal o fermi o grado. 
+1 es de fermi. 0 es lineal. 2 es grado*/
 #ifndef UPDATE_RULE
 #define UPDATE_RULE 0
 #endif
@@ -72,6 +73,16 @@
 #define FERMI_BETA 1.0
 #endif
 
+#ifndef DEGREE_ALPHA
+#define DEGREE_ALPHA 0.5
 #endif
+#ifndef DEGREE_FACTOR_MIN
+#define DEGREE_FACTOR_MIN 0.5
+#endif
+#ifndef DEGREE_FACTOR_MAX
+#define DEGREE_FACTOR_MAX 2.0
+#endif
+#endif
+
 
 
