@@ -23,6 +23,7 @@ critical_relaxation	tmax_ladder	03_critical_transition/relaxation_time/tmax_ladd
 degree_linear_sweep_b	degree_linear	04_copy_probability/degree_linear	archived_or_completed	12	9	24	yes	yes	degree-weighted linear probability sweep_b
 fermi_sweep_b	derived_comparisons	04_copy_probability/fermi/derived_comparisons	archived_or_completed	0	7	0	no	no	derived Fermi comparison plots
 fermi_sweep_b	sweep_b_fig3	04_copy_probability/fermi/sweep_b_fig3	archived_or_completed	5	0	10	yes	no	Fermi copy probability Fig. 3 sweep_b
+fermi_sweep_b	sweep_b_fig3_tower_2026-05-10	04_copy_probability/fermi/sweep_b_fig3/tower_2026-05-10	archived_or_completed	4	4	13	yes	no	Tower run for Fermi beta=5 Fig. 3 sweep_b
 fermi_sweep_b	sweep_b_fig4_fermi_beta_10_full_2026-05-07	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_10_full_2026-05-07	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison
 fermi_sweep_b	sweep_b_fig4_fermi_beta_1_full_2026-05-07	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_1_full_2026-05-07	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison
 fermi_sweep_b	sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison

@@ -49,6 +49,8 @@ Sweep_b experiments comparing Fermi copy probability across beta and p12.
   Purpose: derived Fermi comparison plots
 - `sweep_b_fig3`; path=`04_copy_probability/fermi/sweep_b_fig3`; status=archived_or_completed; raw=5; plots=0; manifest=yes
   Purpose: Fermi copy probability Fig. 3 sweep_b
+- `sweep_b_fig3_tower_2026-05-10`; path=`04_copy_probability/fermi/sweep_b_fig3/tower_2026-05-10`; status=archived_or_completed; raw=4; plots=4; manifest=yes
+  Purpose: Tower run for Fermi beta=5 Fig. 3 sweep_b
 - `sweep_b_fig4_fermi_beta_10_full_2026-05-07`; path=`04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_10_full_2026-05-07`; status=archived_or_completed; raw=8; plots=3; manifest=yes
   Purpose: Fermi copy probability sweep_b comparison
 - `sweep_b_fig4_fermi_beta_1_full_2026-05-07`; path=`04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_1_full_2026-05-07`; status=archived_or_completed; raw=8; plots=3; manifest=yes

@@ -1,33 +1,15 @@
-# Resolución analítica del sistema
+# Resolucion analitica
 
-En esta carpeta se estudia analíticamente el sistema dinámico usado en los retratos de fase del proyecto.
+Esta carpeta contiene la parte simbolica del trabajo.
 
-Partimos de la versión de campo medio reescalada implementada en:
+En `Resolucion_analitica.ipynb` partimos de las ecuaciones de campo medio del modelo y derivamos, paso a paso, las expresiones que luego usamos para interpretar los retratos de fase:
 
-`PhasePortraitsMeanField/phase_portraits_scenarios.py`
+- las nulclinas del sistema;
+- los puntos fijos de esquina, borde e interior;
+- las condiciones para que esos puntos esten dentro del cuadrado fisico `0 <= x1,x2 <= 1`;
+- el jacobiano del sistema;
+- el criterio local de estabilidad de los puntos fijos.
 
-El sistema es
+`modelo_simbolico.py` contiene algunas funciones auxiliares de Sympy que usamos para construir el sistema y calcular nulclinas, puntos fijos y jacobianos.
 
-dx1/dt = x1(1-x1) g1(x1,x2)
-
-dx2/dt = x2(1-x2) g2(x1,x2)
-
-donde
-
-g1 = beta (x1 A - r) + p (x2 C - eps)
-
-g2 = (x2 A - r) + beta p (x1 C - eps)
-
-con
-
-A = 1 - b + r
-
-C = 1 - b + eps
-
-El objetivo de esta parte es obtener de forma simbólica:
-
-1. Nulclinas.
-2. Puntos fijos.
-3. Jacobiano.
-4. Condiciones generales de estabilidad.
-5. Evaluación para conjuntos concretos de parámetros usados en las simulaciones.
+`Resolucion_analitica_anexo.ipynb` guarda una version mas larga y detallada del desarrollo.
