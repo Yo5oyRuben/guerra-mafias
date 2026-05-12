@@ -1,0 +1,30 @@
+category	experiment	path	status	raw_files	plot_files	log_files	has_manifest	has_notes	note
+paper_baseline_sweep_b	01_paper_baselines	01_paper_baselines	archived_or_completed	20	9	39	yes	no	paper Fig. 3/Fig. 4 baseline plus stronger-coupling Fig. 4
+thermodynamic_limit_high_connectivity	critical_asymmetry	02_thermodynamic_limit_high_connectivity/asymmetry/critical_asymmetry	archived_or_completed	3	3	2	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	highN_asymmetry	02_thermodynamic_limit_high_connectivity/asymmetry/highN_asymmetry	archived_or_completed	13	13	3	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	lowN_asymmetry	02_thermodynamic_limit_high_connectivity/asymmetry/lowN_asymmetry	archived_or_completed	13	13	2	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	connectivity_threshold	02_thermodynamic_limit_high_connectivity/connectivity_threshold	archived_or_completed	21	18	7	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	fermi	02_thermodynamic_limit_high_connectivity/fermi	archived_or_completed	5	5	29	no	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	n_scaling_critical	02_thermodynamic_limit_high_connectivity/finite_size_scaling/n_scaling_critical	archived_or_completed	4	4	1	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+thermodynamic_limit_high_connectivity	symmetric_N_scaling	02_thermodynamic_limit_high_connectivity/finite_size_scaling/symmetric_N_scaling	archived_or_completed	13	13	2	yes	yes	large-N, connectivity, finite-size, or asymmetry check against thermodynamic-limit behavior
+frontier_scans_torre	b_scan	03_critical_transition/frontier_scans_torre/b_scan	archived_or_completed	13	5	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	boundary_robustness	03_critical_transition/frontier_scans_torre/boundary_robustness	archived_or_completed	13	5	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	followup	03_critical_transition/frontier_scans_torre/followup	archived_or_completed	19	7	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	high_p11_frontier	03_critical_transition/frontier_scans_torre/high_p11_frontier	archived_or_completed	37	13	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	p11_p12_grid	03_critical_transition/frontier_scans_torre/p11_p12_grid	archived_or_completed	46	16	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	p11_p12_refine	03_critical_transition/frontier_scans_torre/p11_p12_refine	archived_or_completed	37	13	2	yes	yes	transition-frontier scan around the critical region
+frontier_scans_torre	p12_scan	03_critical_transition/frontier_scans_torre/p12_scan	archived_or_completed	19	7	2	yes	yes	transition-frontier scan around the critical region
+critical_relaxation	2026-05-06_relaxation_p073_TMAX200k	03_critical_transition/relaxation_time/p073_single/2026-05-06_relaxation_p073_TMAX200k	archived_or_completed	2	2	2	yes	yes	critical relaxation-time and T_MAX sensitivity maps
+critical_relaxation	2026-05-06_relaxation_p073_TMAX400k	03_critical_transition/relaxation_time/p073_single/2026-05-06_relaxation_p073_TMAX400k	archived_or_completed	2	2	2	yes	yes	critical relaxation-time and T_MAX sensitivity maps
+critical_relaxation	2026-05-06_relaxation_critical_TMAX400k_p_fine	03_critical_transition/relaxation_time/p_fine/2026-05-06_relaxation_critical_TMAX400k_p_fine	archived_or_completed	7	7	2	yes	yes	critical relaxation-time and T_MAX sensitivity maps
+critical_relaxation	2026-05-07_relaxation_critical_p_narrow_TMAX400k	03_critical_transition/relaxation_time/p_fine/2026-05-07_relaxation_critical_p_narrow_TMAX400k	archived_or_completed	5	5	2	yes	yes	critical relaxation-time and T_MAX sensitivity maps
+critical_relaxation	statistics	03_critical_transition/relaxation_time/statistics	archived_or_completed	2	2	2	yes	yes	relaxation-time statistics near the critical region
+critical_relaxation	tmax_ladder	03_critical_transition/relaxation_time/tmax_ladder	archived_or_completed	9	9	2	yes	yes	T_MAX ladder for critical slowing-down diagnostics
+degree_linear_sweep_b	degree_linear	04_copy_probability/degree_linear	archived_or_completed	12	9	24	yes	yes	degree-weighted linear probability sweep_b
+fermi_sweep_b	derived_comparisons	04_copy_probability/fermi/derived_comparisons	archived_or_completed	0	7	0	no	no	derived Fermi comparison plots
+fermi_sweep_b	sweep_b_fig3	04_copy_probability/fermi/sweep_b_fig3	archived_or_completed	5	0	10	yes	no	Fermi copy probability Fig. 3 sweep_b
+fermi_sweep_b	sweep_b_fig4_fermi_beta_10_full_2026-05-07	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_10_full_2026-05-07	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison
+fermi_sweep_b	sweep_b_fig4_fermi_beta_1_full_2026-05-07	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_1_full_2026-05-07	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison
+fermi_sweep_b	sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2	04_copy_probability/fermi/sweep_b_fig4/sweep_b_fig4_fermi_beta_5_full_2026-05-07_run2	archived_or_completed	8	3	16	yes	no	Fermi copy probability sweep_b comparison
+active_or_incomplete	degree_linear_overnight_fig3_thermo_2026-05-11_real	degree_linear_overnight_fig3_thermo_2026-05-11_real	active_do_not_move	0	2	2	no	no	current degree-linear thermodynamic-limit work; keep in place
+degree_linear_sweep_b	fig3_degree_alpha1	degree_linear_overnight_fig3_thermo_2026-05-11_real/fig3_degree_alpha1	active_do_not_move	7	0	13	yes	no	interrupted degree-linear Fig. 3 sweep attempt

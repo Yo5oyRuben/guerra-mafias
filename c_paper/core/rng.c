@@ -1,11 +1,10 @@
-/* File: rng.c
- * Purpose: Implementa el generador de numeros aleatorios y utilidades de muestreo.
- */
-
 #include "rng.h"
 
 /*
- * Generador Parisi-Rapuano
+    aqui se implementa el generador de numeros aleatorios de parisi y rapuano. 
+    es el que nos hicieron usar en la asignatura de fisica computacional para el modelo de ising.
+    no entendemos su funcionamiento interno, pero nos dijeron que es rapido y de mejor calidad
+    (menos correlaciones) que el generador basico de c. por eso lo usamos aqui tambien.
  */
 
 #define PR_STATE_SIZE 256U

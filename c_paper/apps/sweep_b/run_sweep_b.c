@@ -17,7 +17,7 @@ void sweep_b(double p12,double *c_med_values, double *c_sigma_values, double *b_
     unsigned int seed_state=(unsigned int)time(NULL)*2;
     double delta=(double)(BMAX-BMIN)/NDIV;
 
-    /*inicializar cosas*/
+    /*inicializar cosas, segun los valores dados en el archivo de configuracion*/
     lambda.b=BMIN; lambda.e=E; lambda.r=R;
     initial_ER(&g,P11,p12,P22,seed_graph);
     rng_seed(seed_state);

@@ -1,0 +1,25 @@
+time	message
+2026-05-10T20:48:40	starting fig4 degree sweep; reps=30; ndiv=121; clamp=[0.333333333333333,3]
+2026-05-10T20:48:43	started 1/11 paper_p alpha=1 p12=0 pid=10952
+2026-05-10T20:48:43	started 2/11 paper_p alpha=1 p12=0.001 pid=2112
+2026-05-10T20:48:43	started 3/11 paper_p alpha=1 p12=0.002 pid=28120
+2026-05-10T20:48:43	started 4/11 paper_p alpha=1 p12=0.005 pid=21188
+2026-05-10T21:08:04	finished 1/11 paper_p alpha=1 p12=0 exit=
+2026-05-10T21:08:04	started 5/11 paper_p alpha=1 p12=0.01 pid=37264
+2026-05-10T21:10:04	finished 2/11 paper_p alpha=1 p12=0.001 exit=
+2026-05-10T21:10:04	started 6/11 paper_p alpha=1 p12=0.02 pid=40672
+2026-05-10T21:11:24	finished 3/11 paper_p alpha=1 p12=0.002 exit=
+2026-05-10T21:11:24	started 7/11 paper_p alpha=1 p12=0.04 pid=40616
+2026-05-10T21:14:44	finished 4/11 paper_p alpha=1 p12=0.005 exit=
+2026-05-10T21:14:44	started 8/11 alpha_sweep_p0p1 alpha=1 p12=0.1 pid=41672
+2026-05-10T21:40:25	finished 5/11 paper_p alpha=1 p12=0.01 exit=
+2026-05-10T21:40:25	started 9/11 alpha_sweep_p0p1 alpha=2 p12=0.1 pid=34496
+2026-05-10T21:51:06	finished 6/11 paper_p alpha=1 p12=0.02 exit=
+2026-05-10T21:51:06	started 10/11 alpha_sweep_p0p1 alpha=5 p12=0.1 pid=26972
+2026-05-10T22:09:26	finished 7/11 paper_p alpha=1 p12=0.04 exit=
+2026-05-10T22:09:26	started 11/11 alpha_sweep_p0p1 alpha=10 p12=0.1 pid=40328
+2026-05-10T22:50:27	finished 8/11 alpha_sweep_p0p1 alpha=1 p12=0.1 exit=
+2026-05-10T23:25:28	finished 9/11 alpha_sweep_p0p1 alpha=2 p12=0.1 exit=
+2026-05-10T23:34:29	finished 10/11 alpha_sweep_p0p1 alpha=5 p12=0.1 exit=
+2026-05-10T23:47:49	finished 11/11 alpha_sweep_p0p1 alpha=10 p12=0.1 exit=
+2026-05-10T23:47:49	queue completed

@@ -1,8 +1,4 @@
-﻿/* File: payoff.h
- * Purpose: Declara el calculo de pagos/fitness de nodos y poblaciones.
- */
-
-#ifndef PAYOFF_H
+﻿#ifndef PAYOFF_H
 #define PAYOFF_H
 
 #include <stdint.h>

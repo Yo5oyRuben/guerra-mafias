@@ -1,0 +1,8 @@
+powershell.exe : C:\Users\rbndz\Movistar 
+En C:\Users\rbndz\Movistar 
+Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_initial_plane_queue.ps1: 500 Car cter: 5
++     & powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\rbndz\Movistar :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

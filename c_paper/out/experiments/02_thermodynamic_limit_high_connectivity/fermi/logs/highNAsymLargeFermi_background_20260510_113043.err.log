@@ -1,0 +1,8 @@
+gnuplot.exe : "c_paper/out/gp/plot_initial_plane.gp" line 70: warning: All points out of range
+En C:\Users\rbndz\Movistar 
+Cloud\Ruben\3_FISICA\2_Cuatrimestre\Caos_y_SDNL\guerra-mafias\scripts\run_initial_plane_queue.ps1: 502 Car cter: 9
++         & gnuplot -e "infile='$output'; outfile='$plot'" c_paper/out/ ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ("c_paper/out/gp...ts out of range:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

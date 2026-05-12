@@ -1,7 +1,3 @@
-/* File: sim.h
- * Purpose: Declara el bucle principal de simulacion y mediciones.
- */
-
 #ifndef SIM_H
 #define SIM_H
 

@@ -1,0 +1,16 @@
+2026-05-10 11:30:43 Cola initial_plane preparada: preset=highNAsymLarge simulaciones=8. Jobs=10 NDiv=10 NReps=5 UpdateRule=1 FermiBeta=5
+2026-05-10 11:30:43 Manifest: c_paper/out/logs/initial_plane_queue_highNAsymLarge_20260510_113043.tsv
+2026-05-10 11:30:43 START 1/8: N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_10__reps_5
+Configuracion initial plane: Jobs=10 NDiv=10 NReps=5
+Etiqueta: N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5
+Carpeta de parciales: c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5
+Lanzando job 0: ix=0..1 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_000_ix_000_001.txt
+Lanzando job 1: ix=2..3 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_001_ix_002_003.txt
+Lanzando job 2: ix=4..5 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_002_ix_004_005.txt
+Lanzando job 3: ix=6..7 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_003_ix_006_007.txt
+Lanzando job 4: ix=8..9 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_004_ix_008_009.txt
+Lanzando job 5: ix=10..10 -> c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5\part_005_ix_010_010.txt
+Ejecucion paralela terminada.
+Salida final: c_paper/out/raw/initial_plane/initial_plane__N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__rule_fermi__beta_5__ndiv_10__reps_5.txt
+Parciales: c_paper\out\raw\initial_plane\parts\N1_400__N2_1200__P11_0p9__P12_0p02__P22_0p9__B_1p06__R_0__E_m0p4__TMAX_25000__ndiv_10__reps_5
+2026-05-10 12:55:35 config.h restaurado desde el estado inicial de la cola.

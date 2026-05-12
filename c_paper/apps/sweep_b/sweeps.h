@@ -1,7 +1,3 @@
-/* File: sweeps.h
- * Purpose: Declara barridos de parametros para experimentos.
- */
-
 #ifndef SWEEPS_H
 #define SWEEPS_H
 

@@ -1,7 +1,4 @@
-﻿/* File: state.c
- * Purpose: Implementa operaciones sobre el estado dinamico del sistema.
- */
-#include <stdint.h>
+﻿#include <stdint.h>
 #include "graph.h"
 #include "rng.h"
 
@@ -11,6 +8,8 @@ void ini_rand_x0(uint8_t *gamma, double x01, double x02)
     int i,j;
     uint8_t aux;
     int K1=(int)(x01*N1), K2=(int)(x02*N2);
+    /*primero rellenamos el array en orden con el numero de cooperadores que toquen
+    distinguimos si estamos en el subgrafo 1 o 2*/
     for(i=0;i<N1;i++)
     {
         if(i<K1) gamma[i]=1;
@@ -21,7 +20,7 @@ void ini_rand_x0(uint8_t *gamma, double x01, double x02)
         if((i-N1)<K2) gamma[i]=1;
         else gamma[i]=0;
     }
-    /*reordenar el array aleatoriamente*/
+    /*reordenamos el array aleatoriamente para obtener una configuracion inicial aleatoria*/
     for(i=N1-1;i>0;i--)
     {
         j=rng_int(i+1);
