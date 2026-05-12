@@ -90,12 +90,14 @@ function Get-JacobianClass {
 
   $A = 1.0 - $B + $R
   $C = 1.0 - $B + $Eps
-  $g1 = $Beta * ($X1 * $A - $R) + $P * ($X2 * $C - $Eps)
-  $g2 = ($X2 * $A - $R) + $Beta * $P * ($X1 * $C - $Eps)
+  $a12 = $P / $Beta
+  $a21 = $P * $Beta
+  $g1 = ($X1 * $A - $R) + $a12 * ($X2 * $C - $Eps)
+  $g2 = ($X2 * $A - $R) + $a21 * ($X1 * $C - $Eps)
 
-  $j11 = (1.0 - 2.0 * $X1) * $g1 + $X1 * (1.0 - $X1) * $Beta * $A
-  $j12 = $X1 * (1.0 - $X1) * $P * $C
-  $j21 = $X2 * (1.0 - $X2) * $Beta * $P * $C
+  $j11 = (1.0 - 2.0 * $X1) * $g1 + $X1 * (1.0 - $X1) * $A
+  $j12 = $X1 * (1.0 - $X1) * $a12 * $C
+  $j21 = $X2 * (1.0 - $X2) * $a21 * $C
   $j22 = (1.0 - 2.0 * $X2) * $g2 + $X2 * (1.0 - $X2) * $A
 
   $trace = $j11 + $j22
@@ -180,17 +182,19 @@ function Write-Nullclines {
   $p = Parse-DoubleInvariant $pText
   $beta = (Parse-DoubleInvariant $n1Text) / (Parse-DoubleInvariant $n2Text)
 
-  $a = 1.0 - $b + $r
-  $c = 1.0 - $b + $eps
+  $d = $b - 1.0 - $r
+  $h = $b - 1.0 - $eps
+  $a12 = $p / $beta
+  $a21 = $p * $beta
   $tol = 1e-12
   $n = 400
 
   if ($Nullcline1Path -ne '') {
     $rows = New-Object System.Collections.Generic.List[string]
-    if ([Math]::Abs($p * $c) -gt $tol) {
+    if ([Math]::Abs($a12 * $h) -gt $tol) {
       for ($i = 0; $i -le $n; $i++) {
         $x1 = [double]$i / [double]$n
-        $x2 = ($beta * $r + $p * $eps - $beta * $a * $x1) / ($p * $c)
+        $x2 = -($d * $x1 + $r + $a12 * $eps) / ($a12 * $h)
         if ($x2 -ge 0.0 -and $x2 -le 1.0) {
           $rows.Add([string]::Format($InvariantCulture, "{0:F12} {1:F12}", $x1, $x2))
         } elseif ($rows.Count -gt 0 -and $rows[$rows.Count - 1] -ne '') {
@@ -203,10 +207,10 @@ function Write-Nullclines {
 
   if ($Nullcline2Path -ne '') {
     $rows = New-Object System.Collections.Generic.List[string]
-    if ([Math]::Abs($a) -gt $tol) {
+    if ([Math]::Abs($d) -gt $tol) {
       for ($i = 0; $i -le $n; $i++) {
         $x1 = [double]$i / [double]$n
-        $x2 = ($r + $beta * $p * $eps - $beta * $p * $c * $x1) / $a
+        $x2 = -($a21 * $h * $x1 + $r + $a21 * $eps) / $d
         if ($x2 -ge 0.0 -and $x2 -le 1.0) {
           $rows.Add([string]::Format($InvariantCulture, "{0:F12} {1:F12}", $x1, $x2))
         } elseif ($rows.Count -gt 0 -and $rows[$rows.Count - 1] -ne '') {

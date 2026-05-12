@@ -23,9 +23,3 @@ Thumbs.db
 # Temporary queue backups
 *.queue_backup
 
-# Running Fig. 3 additions
-c_paper/out/experiments/01_paper_baselines/logs/fig3_paper_p12_*.log
-c_paper/out/experiments/01_paper_baselines/logs/fig3_paper_p12_*.err
-c_paper/out/experiments/01_paper_baselines/raw/fig3_paper_p12_0p06.tsv
-c_paper/out/experiments/01_paper_baselines/raw/fig3_paper_p12_0p08.tsv
-c_paper/out/experiments/01_paper_baselines/raw/fig3_paper_p12_0p1.tsv
