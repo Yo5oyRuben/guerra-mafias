@@ -48,7 +48,7 @@ static double copy_prob(double D, double K)
 #endif
 
 #if UPDATE_RULE==2
-/*esta es lineal en grado. hemos usado Pr=D/K*(k_j-<k>)/<k>*/
+/*esta es lineal en grado. hemos usado Pr=D/K*(1+α(k_j-<k>)/<k>)*/
 static double copy_prob_degree(double D, double K, double kj, double kmean)
 {
     double P,factor;
