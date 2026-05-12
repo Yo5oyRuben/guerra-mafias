@@ -10,6 +10,4 @@ En concreto, hemos trabajado en tres direcciones:
 - simulaciones microscopicas en C sobre redes de Erdos-Renyi, con barridos en `b`, condiciones iniciales y parametros de acoplo;
 - analisis numerico de los resultados, comparando el limite termodinamico, altas conectividades, transiciones criticas y distintas reglas de copia.
 
-Tambien hemos probado variantes de la probabilidad de copia, como la regla de Fermi y una regla lineal dependiente del grado, para entender hasta que punto las curvas observadas dependen de la dinamica microscopica elegida.
-
 La idea general del repositorio es dejar una traza clara de todo el proceso: la derivacion simbolica, los codigos de simulacion, los experimentos realizados y las figuras finales que usamos para interpretar los resultados.
