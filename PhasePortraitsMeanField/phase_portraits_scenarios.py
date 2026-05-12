@@ -247,7 +247,7 @@ EXAMPLE_PARAMETER_SETS: Dict[str, Dict[str, float]] = {
     "(i)": dict(beta=1.25, r=0.160, p=0.30, eps=-0.40),
 
     # Escenario delicado: beta debe estar muy cerca de 1.
-    "(ii₂)": dict(beta=1.01, r=0.000396, p=0.020, eps=-0.020),
+    "(ii₂)": dict(beta=1.1053, r=0.100, p=0.521, eps=-1.000),
 
     "(ii₁)": dict(beta=1.50, r=0.316, p=0.80, eps=-1.00),
     "(iii₁)": dict(beta=2.0, r=0.03, p=0.60, eps=-1.0),
@@ -565,9 +565,10 @@ def find_params_for_AB_A_Ap_E():
 
 if __name__ == "__main__":
     # Option 1: reproduce an article-like symmetric sequence, Fig.2 style.
+    plot_table_scenario("(ii₁)", beta=1.0, r=0.15, p=0.30, eps=-0.40, save=False)
     # plot_table_scenario("(ii₂)", beta=1.1053, r=0.100, p=0.521, eps=-1.000, save=False)
     # plot_table_scenario("(iii₄)", beta=1.0, r=0.0, p=0.3, eps=-0.4, save=False)
-    plot_table_scenario("(iii₁)", beta=2.0, r=0.03, p=0.60, eps=-1.0, save=False)
+    #plot_table_scenario("(iii₁)", beta=2.0, r=0.03, p=0.60, eps=-1.0, save=False)
     plt.show()
     
 
