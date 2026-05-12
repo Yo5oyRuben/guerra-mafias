@@ -1,0 +1,15 @@
+time	message
+2026-05-10T11:46:46	starting fig3 fermi sweep; beta=5; independence=graph_per_b_rep
+2026-05-10T11:46:48	started 1/6 fig3_fermi p12=0.001 pid=18660
+2026-05-10T11:46:48	started 2/6 fig3_fermi p12=0.002 pid=31956
+2026-05-10T11:46:48	started 3/6 fig3_fermi p12=0.005 pid=20024
+2026-05-10T11:46:48	started 4/6 fig3_fermi p12=0.01 pid=22256
+2026-05-10T11:46:48	started 5/6 fig3_fermi p12=0.02 pid=2832
+2026-05-10T11:46:48	started 6/6 fig3_fermi p12=0.04 pid=17748
+2026-05-11T04:46:32	finished 1/6 fig3_fermi p12=0.001 exit=
+2026-05-11T06:41:55	finished 2/6 fig3_fermi p12=0.002 exit=
+2026-05-11T13:25:04	finished 3/6 fig3_fermi p12=0.005 exit=
+2026-05-11T21:06:15	finished 4/6 fig3_fermi p12=0.01 exit=
+2026-05-11T23:53:39	finished 5/6 fig3_fermi p12=0.02 exit=
+2026-05-11T23:53:39	finished 6/6 fig3_fermi p12=0.04 exit=
+2026-05-11T23:53:39	queue completed
